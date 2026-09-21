@@ -42,13 +42,15 @@
     .access-gate.is-unlocking { opacity: 0; visibility: hidden; pointer-events: none; }
     .access-gate[hidden] { display: none; }
     .gate-form { width: min(100%, 340px); text-align: center; }
-    .gate-label { display: block; margin-bottom: 10px; color: var(--muted); font-size: .78rem; letter-spacing: .12em; }
     .gate-input {
-      width: 100%; height: 56px; padding: 0 18px; border: 0; border-bottom: 1px solid var(--ink);
+      width: 100%; height: 56px; padding: 0 18px; border: 1px solid rgba(17, 19, 17, .22);
       border-radius: 0; color: var(--ink); background: transparent; text-align: center;
       font: 500 1.4rem/1 var(--latin); letter-spacing: .45em; outline: 0;
     }
-    .gate-input:focus { border-bottom-color: var(--mint-ink); }
+    .gate-input::placeholder {
+      color: var(--muted); font: 400 .78rem/1 var(--sans); letter-spacing: .12em; opacity: .52;
+    }
+    .gate-input:focus { border-color: var(--mint-ink); }
     .gate-submit {
       min-width: 112px; min-height: 48px; margin-top: 24px; padding: 0 24px;
       border: 1px solid var(--ink); border-radius: 0; color: var(--paper); background: var(--ink); cursor: pointer;
@@ -64,7 +66,7 @@
       justify-content: space-between; padding: 0 20px; transition: background-color .3s ease, backdrop-filter .3s ease;
     }
     .site-header.is-scrolled, body.menu-open .site-header { background: rgba(251, 250, 246, .88); backdrop-filter: blur(16px); }
-    .brand { font: 500 .65rem/1 var(--latin); letter-spacing: .22em; text-decoration: none; opacity: .75; transition: opacity .2s ease; }
+    .brand { font: 500 .78rem/1 var(--latin); letter-spacing: .18em; text-decoration: none; opacity: .78; transition: opacity .2s ease; }
     .brand:hover { opacity: 1; }
     .menu-toggle {
       position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer;
@@ -278,13 +280,14 @@
     /* ─── Desktop (≥760px) ─── */
     @media (min-width: 760px) {
       .site-header { height: 72px; padding-inline: clamp(30px, 5vw, 72px); }
-      .brand { font-size: .7rem; }
+      .brand { font-size: .9rem; }
       .menu-panel { padding-inline: max(8vw, calc((100vw - 1080px) / 2)); }
       .menu-panel a { font-size: clamp(2rem, 4vw, 3.8rem); }
 
-      .hero { height: auto; min-height: 100svh; padding: 88px 6vw 48px; }
-      .scroll-indicator { gap: 14px; margin-bottom: 2px; }
-      .scroll-line { height: clamp(36px, 6.5svh, 60px); }
+      .hero { height: 25svh; min-height: 180px; padding: 78px 6vw 20px; }
+      .scroll-indicator { gap: 10px; margin-bottom: 0; }
+      .scroll-label { font-size: .8rem; }
+      .scroll-line { height: clamp(24px, 3.5svh, 36px); }
       .event {
         min-height: max(82svh, 620px); display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr;
         align-items: end; column-gap: 0; row-gap: 0; padding: 0;
@@ -292,24 +295,27 @@
       .event-inner { width: min(100%, 1160px); margin: 0 auto; padding: 60px clamp(50px, 8vw, 130px) 90px; }
       .event-inner { grid-column: 1; grid-row: 1; }
       .event-date {
-        position: absolute; top: 50%; left: 50%; grid-column: auto; grid-row: auto; justify-self: auto;
-        color: rgba(17, 19, 17, .045); font-size: clamp(8rem, 17vw, 16rem); font-weight: 700;
-        line-height: .88; letter-spacing: -.075em; transform: translate(-50%, -52%) scale(.96);
+        position: absolute; top: 92px; left: clamp(50px, 8vw, 130px); grid-column: auto; grid-row: auto; justify-self: auto;
+        color: rgba(17, 19, 17, .46); font-size: 1rem; font-weight: 600;
+        line-height: 1.2; letter-spacing: .06em; transform: none;
       }
-      .event-date--medium { font-size: clamp(5rem, 9vw, 8.5rem); }
-      .event-date--wide { font-size: clamp(3.75rem, 6.5vw, 6.5rem); }
-      .event-date--range { font-size: clamp(2.6rem, 4.4vw, 4.6rem); }
-      .event--dark .event-date { color: rgba(251, 250, 246, .055); }
-      .event--mint .event-date { color: rgba(17, 19, 17, .07); }
-      .event.is-visible .event-date { transform: translate(-50%, -52%) scale(1); }
-      .event.is-current .event-date { transform: translate(-50%, -56%) scale(1); }
-      .event-art { position: absolute; inset: 0; grid-column: auto; grid-row: auto; width: auto; transform: none; }
+      .event-date--medium, .event-date--wide, .event-date--range { font-size: 1rem; letter-spacing: .06em; }
+      .event--dark .event-date { color: rgba(251, 250, 246, .52); }
+      .event--mint .event-date { color: rgba(17, 19, 17, .5); }
+      .event.is-visible .event-date { transform: none; }
+      .event.is-current .event-date { transform: none; }
+      .event-art { position: absolute; inset: 132px 0 0; grid-column: auto; grid-row: auto; width: auto; align-self: stretch; transform: none; }
       .art-svg { width: min(68vw, 860px); max-width: calc(100% - 80px); max-height: 76svh; }
       .event-body { margin-left: auto; }
       .event:nth-child(even) .event-body { margin-right: auto; margin-left: 0; }
       .event-body p, .event-body li { font-size: clamp(1.2rem, 1.6vw, 1.52rem); }
       blockquote { max-width: 900px; font-size: clamp(2.5rem, 4.2vw, 4.6rem); }
       .final-wish { margin-left: 0; font-size: clamp(1rem, 1.25vw, 1.18rem) !important; }
+      .event--motto .event-inner { align-self: stretch; display: flex; width: 100%; max-width: none; padding-top: 92px; }
+      .event--motto .event-body { min-height: 100%; margin: 0 !important; display: flex; flex-direction: column; }
+      .event--motto .motto { max-width: none; }
+      .event--motto .final-wish { margin-top: auto !important; }
+      .event--motto .event-art { inset: 210px 0 0; }
     }
 
     /* ─── Reduced motion ─── */
@@ -325,7 +331,7 @@
       .af { opacity: var(--fill-opacity, .12) !important; }
     }
     @media (min-width: 760px) and (prefers-reduced-motion: reduce) {
-      .event-date { transform: translate(-50%, -52%) !important; }
+      .event-date { transform: none !important; }
     }
 
     /* ─── Print (A4) ─── */
@@ -358,8 +364,7 @@
 
   <div class="access-gate" role="dialog" aria-modal="true" aria-label="四位數密碼">
     <form class="gate-form" novalidate>
-      <label class="gate-label" for="gate-password">四位數密碼</label>
-      <input class="gate-input" id="gate-password" name="password" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" aria-describedby="gate-error">
+      <input class="gate-input" id="gate-password" name="password" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="四位數密碼" aria-label="四位數密碼" aria-describedby="gate-error">
       <button class="gate-submit" type="submit">進入</button>
       <p class="gate-error" id="gate-error" role="status" aria-live="polite"></p>
     </form>
@@ -441,7 +446,7 @@
             </svg>
           </div>
           <p class="event-date event-date--wide" aria-hidden="true">2019 / Summer</p>
-          <div class="event-inner"><div class="event-body"><p>在台灣參加陽光劇團 M 老師的工作坊。</p><ul><li>成吉控肉飯</li><li>第一次體會到當演員的爽感與成就感。</li></ul><p>同年暑假也曾前往法國。</p></div></div>
+          <div class="event-inner"><div class="event-body"><p>在台灣參加陽光劇團 M 老師的工作坊。</p><ul><li>成吉控肉飯</li><li>第一次體會到當演員的爽感與成就感。</li></ul></div></div>
         </article>
         <article class="event event--dark reveal" tabindex="0" aria-label="2019/12 事件">
           <div class="event-art" aria-hidden="true">
@@ -485,7 +490,7 @@
               <circle class="ad" style="--d:1.22s" cx="90" cy="70" r="3.5" fill="currentColor"/>
             </svg>
           </div>
-          <p class="event-date" aria-hidden="true">2023</p>
+          <p class="event-date event-date--medium" aria-hidden="true">2023/11</p>
           <div class="event-inner"><div class="event-body"><p>前往京都觀看陽光劇團的《金夢島》。</p></div></div>
         </article>
       </section>
@@ -522,7 +527,7 @@
           <p class="event-date event-date--medium" aria-hidden="true">2025/06</p>
           <div class="event-inner"><div class="event-body"><p>上導演的面具課。</p></div></div>
         </article>
-        <article class="event event--mint reveal" tabindex="0" aria-label="小丑課名言">
+        <article class="event event--mint event--motto reveal" tabindex="0" aria-label="小丑課名言">
           <div class="event-art" aria-hidden="true">
             <svg class="art-svg" viewBox="0 0 180 160">
               <g class="star-shape">

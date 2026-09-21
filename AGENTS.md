@@ -66,8 +66,8 @@ The user permits a frontend framework or animation library if it materially impr
 1. Fixed header with site name.
 2. A full-screen year menu opened by the fixed hamburger button at every viewport size.
 3. Compact mobile opening screen (`20svh`, minimum 120px); `100svh` on desktop.
-4. Eleven consecutive milestone scenes grouped into four anchor sections; the 2020/03 return and 2020/03—2023/11 stay are one combined scene.
-5. A full-height quotation scene.
+4. Ten consecutive milestone scenes grouped into four anchor sections; the 2020/03 return and 2020/03—2023/11 stay are one combined scene.
+5. A combined `2024/09-2025/05` scene containing the France classes, monthly praise, and teacher quotation.
 6. The 2025/06 mask-class scene.
 7. A standalone `Shitty but proud.` scene as the final section, with the user-authored blessing appearing last.
 

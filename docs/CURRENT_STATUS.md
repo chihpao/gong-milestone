@@ -4,7 +4,7 @@
 
 ## 一句話狀態
 
-網站已完成第十次版面調整（v10）：入口移除重複站名、里程碑場景縮短，手機版年份與插圖改為分層配置。原始碼已推送至 `chihpao/gong-milestone`，GitHub Pages 已啟用並等待最終版本完成部署。
+網站已完成第十次版面調整（v10）：入口移除重複站名、里程碑場景縮短，手機版年份與插圖改為分層配置。原始碼已推送至 `chihpao/gong-milestone`，並由 GitHub Pages 正式發布。
 
 ## 專案目的
 
@@ -107,7 +107,8 @@
 
 - 本機 Git repository 已建立，預設分支為 `main`。
 - GitHub repository `chihpao/gong-milestone` 已建立遠端連線，`main` 已完成首次推送。
-- GitHub Pages 已設定從 `main` 分支根目錄發布；首次建置封裝成功，待最終版本部署完成後確認公開網址。
+- GitHub Pages 已設定從 `main` 分支根目錄發布，公開網址為 `https://chihpao.github.io/gong-milestone/`。
+- Pages 首次完整部署已成功，公開網址回傳 HTTP 200；v10 最終版以事件高度與入口文字標記完成線上內容驗證。
 - 仍可依使用者實際手機觀看後的回饋微調字級、場景高度與動畫節奏。
 
 後續外部發布變更必須在使用者明確要求後才執行。

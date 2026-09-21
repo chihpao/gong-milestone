@@ -7,7 +7,7 @@
 - 四碼入口移除重複的「龔龔里程碑」文字，保留簡潔的密碼標示與無障礙名稱。
 - 手機事件場景改為約 `78svh`、最低 560px；桌面改為約 `82svh`、最低 620px，縮短各里程碑之間的捲動距離。
 - 手機背景年份移到場景上方並提高圖層，SVG 插圖從年份下方開始，避免圖形蓋住年份；桌面維持中央疊景。
-- repository 已推送至 `chihpao/gong-milestone`，並啟用從 `main` 根目錄發布的 GitHub Pages。
+- repository 已推送至 `chihpao/gong-milestone`，並啟用從 `main` 根目錄發布的 GitHub Pages；公開網址為 `https://chihpao.github.io/gong-milestone/`。
 
 ## 2026-09-21 — v9 日期與滿版內容防裁切
 

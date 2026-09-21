@@ -130,21 +130,27 @@
     .event--dark { color: var(--paper); background: var(--ink); }
     .event--mint { background: var(--mint); }
 
-    .event-inner { position: relative; z-index: 3; width: 100%; min-width: 0; max-width: 100%; padding: 36px 25px 54px; }
+    .event-inner {
+      position: relative; z-index: 3; width: 100%; min-width: 0; max-width: 100%;
+      padding: 36px max(25px, env(safe-area-inset-right)) calc(54px + env(safe-area-inset-bottom)) max(25px, env(safe-area-inset-left));
+    }
 
     /* ── large ghost date ── */
     .event-date {
-      position: absolute; top: 50%; left: -3vw; z-index: 1; margin: 0;
+      position: absolute; top: 50%; left: 50%; z-index: 1; margin: 0;
       color: rgba(17, 19, 17, .045);
-      font: 700 clamp(5.5rem, 27vw, 12rem)/.85 var(--latin); letter-spacing: -.085em;
+      font: 700 clamp(4.5rem, 22vw, 10rem)/.88 var(--latin); letter-spacing: -.075em;
       white-space: nowrap;
-      opacity: 0; transform: translateY(-52%) translateX(-18px);
+      opacity: 0; transform: translate(-50%, -52%) scale(.96);
       transition: opacity 1s ease, transform 1.4s cubic-bezier(.16,1,.3,1);
     }
+    .event-date--medium { font-size: clamp(3.25rem, 13vw, 6.5rem); }
+    .event-date--wide { font-size: clamp(2.25rem, 8vw, 4.4rem); }
+    .event-date--range { font-size: clamp(1.75rem, 5.5vw, 3.25rem); letter-spacing: -.045em; }
     .event--dark .event-date { color: rgba(251, 250, 246, .055); }
     .event--mint .event-date { color: rgba(17, 19, 17, .07); }
-    .event.is-visible .event-date { opacity: 1; transform: translateY(-52%) translateX(0); }
-    .event.is-current .event-date { transform: translateY(-56%) translateX(0); }
+    .event.is-visible .event-date { opacity: 1; transform: translate(-50%, -52%) scale(1); }
+    .event.is-current .event-date { transform: translate(-50%, -56%) scale(1); }
 
     /* ── per-milestone SVG art ── */
     .event-art {
@@ -152,7 +158,7 @@
       display: grid; place-items: center; overflow: hidden; pointer-events: none;
     }
     .art-svg {
-      width: clamp(440px, 118vw, 760px); max-width: none; height: auto; overflow: visible;
+      width: min(86vw, 620px); max-width: calc(100% - 32px); max-height: 68svh; height: auto; overflow: visible;
       opacity: 0; transform: scale(.86);
       transition: opacity 1.2s ease .08s, transform 1.6s cubic-bezier(.16,1,.3,1) .08s;
     }
@@ -280,9 +286,12 @@
       .scroll-line { height: clamp(36px, 6.5svh, 60px); }
       .event { min-height: 100svh; }
       .event-inner { width: min(100%, 1160px); margin: 0 auto; padding: 60px clamp(50px, 8vw, 130px) 90px; }
-      .event-date { left: max(-1vw, calc((100vw - 1160px) / 2)); font-size: clamp(9rem, 18vw, 17rem); }
+      .event-date { left: 50%; font-size: clamp(8rem, 17vw, 16rem); }
+      .event-date--medium { font-size: clamp(5rem, 9vw, 8.5rem); }
+      .event-date--wide { font-size: clamp(3.75rem, 6.5vw, 6.5rem); }
+      .event-date--range { font-size: clamp(2.6rem, 4.4vw, 4.6rem); }
       .event-art { inset: 0; transform: none; }
-      .art-svg { width: min(78vw, 980px); }
+      .art-svg { width: min(68vw, 860px); max-width: calc(100% - 80px); max-height: 76svh; }
       .event-body { margin-left: auto; }
       .event:nth-child(even) .event-body { margin-right: auto; margin-left: 0; }
       .event-body p, .event-body li { font-size: clamp(1.2rem, 1.6vw, 1.52rem); }
@@ -296,7 +305,7 @@
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
       .event-body > p, .event-body > ul, .event-body > blockquote,
       .event-body > ul > li { opacity: 1 !important; transform: none !important; }
-      .event-date { opacity: 1 !important; transform: translateY(-52%) !important; }
+      .event-date { opacity: 1 !important; transform: translate(-50%, -52%) !important; }
       .art-svg { opacity: .6 !important; transform: none !important; }
       .al { stroke-dashoffset: 0 !important; }
       .ad { opacity: 1 !important; }
@@ -416,7 +425,7 @@
               </g>
             </svg>
           </div>
-          <p class="event-date" aria-hidden="true">2019 / Summer</p>
+          <p class="event-date event-date--wide" aria-hidden="true">2019 / Summer</p>
           <div class="event-inner"><div class="event-body"><p>在台灣參加陽光劇團 M 老師的工作坊。</p><ul><li>成吉控肉飯</li><li>第一次體會到當演員的爽感與成就感。</li></ul><p>同年暑假也曾前往法國。</p></div></div>
         </article>
         <article class="event event--dark reveal" tabindex="0" aria-label="2019/12 事件">
@@ -432,7 +441,7 @@
               </g>
             </svg>
           </div>
-          <p class="event-date" aria-hidden="true">2019/12</p>
+          <p class="event-date event-date--medium" aria-hidden="true">2019/12</p>
           <div class="event-inner"><div class="event-body"><p>再次前往法國，並在陽光劇團實習。跨年當晚，在法國巴黎的一間洗衣店度過。</p></div></div>
         </article>
       </section>
@@ -449,7 +458,7 @@
               <circle class="ad" style="--d:1.18s" cx="90" cy="104" r="3" fill="currentColor"/>
             </svg>
           </div>
-          <p class="event-date" aria-hidden="true">2020/03—2023/11</p>
+          <p class="event-date event-date--range" aria-hidden="true">2020/03—2023/11</p>
           <div class="event-inner"><div class="event-body"><p>因為疫情爆發，回到台灣。</p><p>待在台灣。</p></div></div>
         </article>
         <article class="event event--dark reveal" tabindex="0" aria-label="2023/11 事件">
@@ -491,7 +500,7 @@
               </g>
             </svg>
           </div>
-          <p class="event-date" aria-hidden="true">2024/09</p>
+          <p class="event-date event-date--medium" aria-hidden="true">2024/09</p>
           <div class="event-inner"><div class="event-body"><p class="quote-label">陽光劇團老師：</p><blockquote>雖然 Gong Gong 的法文非常爛，但是她懂得如何表演。她活在當下，這就是劇場，這就是表演。</blockquote></div></div>
         </article>
         <article class="event reveal" tabindex="0" aria-label="2025/06 事件">

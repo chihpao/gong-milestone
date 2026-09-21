@@ -236,14 +236,15 @@
     }
 
     /* ── body text base ── */
-    .event-body { width: 100%; min-width: 0; max-width: 38rem; overflow-wrap: break-word; }
-    .event-body p { margin: 0; font-size: clamp(1.06rem, 4.6vw, 1.32rem); line-height: 1.9; }
+    .event-body { --body-size: clamp(1.06rem, 4.6vw, 1.32rem); width: 100%; min-width: 0; max-width: 38rem; overflow-wrap: break-word; }
+    .event-body p { margin: 0; font-size: var(--body-size); line-height: 1.9; }
     .event-body p + p { margin-top: 14px; }
     .event-body ul { margin: 20px 0; padding-left: 1.2em; }
-    .event-body li { padding-left: .15em; font-size: clamp(1.06rem, 4.6vw, 1.32rem); line-height: 1.78; }
+    .event-body li { padding-left: .15em; font-size: var(--body-size); line-height: 1.78; }
     .event-body li + li { margin-top: 8px; }
     .quote-label { margin-bottom: 22px !important; color: var(--mint) !important; font: 600 .76rem/1.4 var(--sans) !important; letter-spacing: .08em; }
     blockquote { max-width: 100%; margin: 0; font-size: clamp(1.08rem, 4.8vw, 1.42rem); font-weight: 700; line-height: 1.6; letter-spacing: .015em; }
+    .event--course .quote-label, .event--course blockquote { font-size: var(--body-size) !important; }
     .motto { max-width: 8em; font: 700 clamp(3rem, 14vw, 7rem)/1.08 var(--latin) !important; letter-spacing: -.055em; }
     .final-wish {
       max-width: 24em; margin-top: clamp(34px, 7vh, 72px) !important;
@@ -308,7 +309,8 @@
       .art-svg { width: min(68vw, 860px); max-width: calc(100% - 80px); max-height: 76svh; }
       .event-body { margin-left: auto; }
       .event:nth-child(even) .event-body { margin-right: auto; margin-left: 0; }
-      .event-body p, .event-body li { font-size: clamp(1.2rem, 1.6vw, 1.52rem); }
+      .event-body { --body-size: clamp(1.2rem, 1.6vw, 1.52rem); }
+      .event-body p, .event-body li { font-size: var(--body-size); }
       blockquote { max-width: 900px; font-size: clamp(2.5rem, 4.2vw, 4.6rem); }
       .final-wish { margin-left: 0; font-size: clamp(1rem, 1.25vw, 1.18rem) !important; }
       .event--motto .event-inner { align-self: stretch; display: flex; width: 100%; max-width: none; padding-top: 92px; }
@@ -356,6 +358,7 @@
       .event-body p, .event-body li { font-size: 10.5pt; }
       .quote-label { color: #555 !important; }
       blockquote { font-size: 17pt; }
+      .event--course .quote-label, .event--course blockquote { font-size: 10.5pt !important; }
       .motto { font-size: 26pt !important; }
     }
   </style>
@@ -496,7 +499,7 @@
       </section>
 
       <section class="period" id="y2024" aria-label="2024 至 2025">
-        <article class="event reveal" tabindex="0" aria-label="2024/09-2025/05 事件">
+        <article class="event event--course reveal" tabindex="0" aria-label="2024/09-2025/05 事件">
           <div class="event-art" aria-hidden="true">
             <svg class="art-svg" viewBox="0 0 180 160">
               <g class="spotlight-beam">

@@ -37,7 +37,7 @@ Update conflicting documentation as part of the same change. Do not leave stale 
 - `GongGong_Milestone.html` is a compatibility copy and must remain byte-identical to `index.html` while it exists.
 - HTML, CSS, and JavaScript are embedded in the two HTML files.
 - There is no build step, package manager, application framework, backend, database, or local asset pipeline. The `0916` client-side gate is a visual deterrent, not authentication.
-- Google Fonts are the only runtime dependency.
+- Google Fonts are the only external runtime dependency. `2017_animation.svg` is a local animated asset used by the 2017 scene.
 - GitHub Pages publication targets `chihpao/gong-milestone`; consult `docs/CURRENT_STATUS.md` for the current deployment state.
 
 The user permits a frontend framework or animation library if it materially improves the result. Do not add one by default: first explain why the existing static architecture cannot meet the requested change, and preserve GitHub Pages compatibility.

@@ -171,6 +171,24 @@
     }
     .event--dark.event.is-visible .art-svg { opacity: .34; }
     .event--mint.event.is-visible .art-svg { opacity: .3; }
+    .art-svg--external { aspect-ratio: 1; object-fit: contain; }
+    .art-svg--fallback { display: none; }
+    .event--mint.event.is-visible .art-svg--external { opacity: .72; animation: none; }
+    .event--external-art::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(90deg, rgba(113, 223, 194, .3), rgba(113, 223, 194, .88) 62%, rgba(113, 223, 194, .94));
+    }
+    .event--external-art { padding: 0; }
+    .event--external-art .event-date { margin: 22px 20px 0; }
+    .event--external-art .event-inner { padding-right: 20px; }
+    .event--external-art .event-art {
+      position: absolute; inset: 0; z-index: 0; grid-column: 1 / -1; grid-row: 1 / -1;
+      width: auto; align-self: stretch; margin: 0;
+    }
+    .event--external-art .art-svg--external {
+      position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+      max-width: none; max-height: none; aspect-ratio: auto; object-fit: cover;
+    }
 
     /* stroke draw-in */
     .al {
@@ -295,11 +313,13 @@
       }
       .event-inner { width: min(100%, 1160px); margin: 0 auto; padding: 60px clamp(50px, 8vw, 130px) 90px; }
       .event-inner { grid-column: 1; grid-row: 1; }
+      .event--external-art .event-inner { padding: 60px clamp(50px, 8vw, 130px) 90px; }
       .event-date {
         position: absolute; top: 92px; left: clamp(50px, 8vw, 130px); grid-column: auto; grid-row: auto; justify-self: auto;
         color: rgba(17, 19, 17, .46); font-size: 1rem; font-weight: 600;
         line-height: 1.2; letter-spacing: .06em; transform: none;
       }
+      .event--external-art .event-date { margin: 0; }
       .event-date--medium, .event-date--wide, .event-date--range { font-size: 1rem; letter-spacing: .06em; }
       .event--dark .event-date { color: rgba(251, 250, 246, .52); }
       .event--mint .event-date { color: rgba(17, 19, 17, .5); }
@@ -328,6 +348,8 @@
       .event-body > ul > li { opacity: 1 !important; transform: none !important; }
       .event-date { opacity: 1 !important; transform: none !important; }
       .art-svg { opacity: .6 !important; transform: none !important; }
+      .art-svg--external { display: none !important; }
+      .art-svg--fallback { display: block; }
       .al { stroke-dashoffset: 0 !important; }
       .ad { opacity: 1 !important; }
       .af { opacity: var(--fill-opacity, .12) !important; }
@@ -348,7 +370,12 @@
       .event-inner { padding: 9mm 0; }
       .event-date { display: none; }
       .event-art { position: static; display: block; transform: none; margin: 0 0 5mm; }
+      .event--external-art .event-art { position: static; width: auto; }
+      .event--external-art .event-inner { padding: 9mm 0; }
+      .event--external-art::after { display: none; }
       .art-svg { width: 36mm; opacity: .55 !important; transform: none !important; }
+      .art-svg--external { display: none !important; }
+      .art-svg--fallback { display: block !important; }
       .al { stroke-dashoffset: 0 !important; }
       .ad { opacity: 1 !important; }
       .af { opacity: var(--fill-opacity, .12) !important; }
@@ -394,14 +421,15 @@
 
     <div class="timeline">
       <section class="period" id="y2017" aria-label="2017">
-        <article class="event event--mint reveal" tabindex="0" aria-label="2017 事件">
+        <article class="event event--mint event--external-art reveal" tabindex="0" aria-label="2017 事件">
           <div class="event-art" aria-hidden="true">
-            <svg class="art-svg" viewBox="0 0 180 160">
-              <circle class="al" style="--d:.12s" cx="90" cy="80" r="61"/>
+            <img class="art-svg art-svg--external" src="2017_animation.svg" alt="">
+            <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
+              <circle class="al" cx="90" cy="80" r="61"/>
               <g class="person-figure">
-                <circle class="al" style="--d:.48s" cx="90" cy="51" r="10"/>
-                <path class="al" style="--d:.62s" d="M90 61v38m-25-22 25-10 25 10M90 99l-17 28m17-28 17 28"/>
-                <circle class="ad" style="--d:1.35s" cx="90" cy="80" r="3" fill="currentColor"/>
+                <circle class="al" cx="90" cy="51" r="10"/>
+                <path class="al" d="M90 61v38m-25-22 25-10 25 10M90 99l-17 28m17-28 17 28"/>
+                <circle class="ad" cx="90" cy="80" r="3" fill="currentColor"/>
               </g>
             </svg>
           </div>

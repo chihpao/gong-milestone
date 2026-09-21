@@ -8,10 +8,10 @@
 
 ## 交付格式
 
-- 交付一個完整、自足的 HTML 檔案。
+- 主要網站仍由單一 HTML 實作；2017 場景依後續指示使用同目錄的 `2017_animation.svg` 本地動畫資產。
 - CSS 與 JavaScript 全部寫在同一個 HTML 內。
-- 不依賴外部圖片檔。
-- 不使用外部圖片檔；里程碑可使用內嵌 SVG 線性插圖。
+- 除使用者提供的 `2017_animation.svg` 外，不依賴其他外部圖片檔。
+- 其他里程碑使用內嵌 SVG 線性插圖。
 - 字體使用 Google Fonts 的 Noto Sans TC 與 Montserrat，並設定系統備援字體。
 
 ## 使用情境

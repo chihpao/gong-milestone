@@ -173,14 +173,10 @@
     .event--mint.event.is-visible .art-svg { opacity: .3; }
     .art-svg--external { aspect-ratio: 1; object-fit: contain; }
     .art-svg--fallback { display: none; }
-    .event--mint.event.is-visible .art-svg--external { opacity: .72; animation: none; }
-    .event--external-art::after {
-      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(90deg, rgba(113, 223, 194, .3), rgba(113, 223, 194, .88) 62%, rgba(113, 223, 194, .94));
-    }
-    .event--external-art { padding: 0; }
-    .event--external-art .event-date { margin: 22px 20px 0; }
-    .event--external-art .event-inner { padding-right: 20px; }
+    .event--mint.event.is-visible .art-svg--external { opacity: 1; animation: none; }
+    .event--external-art { padding: 0; color: #000; background: #fff; }
+    .event--external-art .event-date { margin: 22px 20px 0; color: #fff; mix-blend-mode: difference; }
+    .event--external-art .event-inner { padding-right: 20px; color: #fff; mix-blend-mode: difference; }
     .event--external-art .event-art {
       position: absolute; inset: 0; z-index: 0; grid-column: 1 / -1; grid-row: 1 / -1;
       width: auto; align-self: stretch; margin: 0;
@@ -188,6 +184,7 @@
     .event--external-art .art-svg--external {
       position: absolute; inset: 0; display: block; width: 100%; height: 100%;
       max-width: none; max-height: none; aspect-ratio: auto; object-fit: cover;
+      filter: grayscale(1) contrast(1.45) brightness(1.04);
     }
 
     /* stroke draw-in */
@@ -319,10 +316,11 @@
         color: rgba(17, 19, 17, .46); font-size: 1rem; font-weight: 600;
         line-height: 1.2; letter-spacing: .06em; transform: none;
       }
-      .event--external-art .event-date { margin: 0; }
+      .event--external-art .event-date { margin: 0; color: #fff; }
       .event-date--medium, .event-date--wide, .event-date--range { font-size: 1rem; letter-spacing: .06em; }
       .event--dark .event-date { color: rgba(251, 250, 246, .52); }
       .event--mint .event-date { color: rgba(17, 19, 17, .5); }
+      .event--mint.event--external-art .event-date { color: #fff; }
       .event.is-visible .event-date { transform: none; }
       .event.is-current .event-date { transform: none; }
       .event-art { position: absolute; inset: 132px 0 0; grid-column: auto; grid-row: auto; width: auto; align-self: stretch; transform: none; }
@@ -372,7 +370,7 @@
       .event-art { position: static; display: block; transform: none; margin: 0 0 5mm; }
       .event--external-art .event-art { position: static; width: auto; }
       .event--external-art .event-inner { padding: 9mm 0; }
-      .event--external-art::after { display: none; }
+      .event--external-art .event-inner, .event--external-art .event-date { color: #111; mix-blend-mode: normal; }
       .art-svg { width: 36mm; opacity: .55 !important; transform: none !important; }
       .art-svg--external { display: none !important; }
       .art-svg--fallback { display: block !important; }

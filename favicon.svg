@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#111311"/>
+  <text
+    x="16" y="23.5"
+    font-family="'Montserrat', 'Arial Rounded MT Bold', Arial, sans-serif"
+    font-weight="700"
+    font-size="22"
+    fill="#71dfc2"
+    text-anchor="middle"
+    dominant-baseline="auto"
+    letter-spacing="-0.5"
+  >G</text>
+</svg>

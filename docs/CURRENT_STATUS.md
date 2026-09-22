@@ -4,7 +4,7 @@
 
 ## 目前狀態
 
-四階段驗收與本地修正已完成。使用者已明確授權第四階段推送至既有 GitHub 倉庫；目前正在發布前核對，發布結果將補記於本文件。README.md 不納入本次提交。
+四階段驗收與修正已完成，程式碼提交 4f91f2b 已成功推送至既有 GitHub main。GitHub Pages 已啟動部署（工作流程 35735714004）；記錄當下仍在執行，尚未確認公開網站更新。README.md 未納入本次提交。
 
 ## 現行實作
 
@@ -40,6 +40,7 @@
 - 遠端：https://github.com/chihpao/gong-milestone.git
 - 網站：https://chihpao.github.io/gong-milestone/
 - 發布前再次 fetch，main 與 origin/main 無分歧，未發生合併衝突。
+- 叉叉圖示另於三個引擎各 11 種寬度補測，皆可見、可點擊，開關狀態正常。
 - 本次僅提交網站、11 個現行 SVG 與交接文件；不提交 README.md、QA 暫存檔、私人圖片或舊版忽略資產。
 
 歷史變更請查閱 CHANGELOG.md；本文件只描述目前版本。

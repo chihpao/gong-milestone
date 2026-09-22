@@ -1,49 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <!-- Continuous SMIL scene; timing and loop design: docs/ANIMATION_STORYBOARD.md. -->
   <defs>
-    <!-- Summer studio atmosphere -->
     <radialGradient id="summer-room" cx="0.4" cy="0.5" r="0.65">
       <stop offset="0%" stop-color="#244d47" stop-opacity="0.35"/>
       <stop offset="60%" stop-color="#102624" stop-opacity="0.15"/>
       <stop offset="100%" stop-color="#081414" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Flying Rehearsal Script Page (Tumbling in the fan breeze) -->
     <g id="flying-script-page">
       <rect x="-24" y="-34" width="48" height="68" rx="2" fill="#f8f4eb" stroke="#162e2a" stroke-width="1.8"/>
-      <!-- Script lines text hints -->
       <line x1="-16" y1="-20" x2="16" y2="-20" stroke="#254d46" stroke-width="2"/>
       <line x1="-16" y1="-10" x2="16" y2="-10" stroke="#254d46" stroke-width="2"/>
       <line x1="-16" y1="0" x2="16" y2="0" stroke="#254d46" stroke-width="2"/>
       <line x1="-16" y1="10" x2="8" y2="10" stroke="#254d46" stroke-width="2"/>
     </g>
-
-    <!-- Swirling Gust Streamer -->
     <g id="gust-streamer">
-      <path d="M0 0 C80 -30 180 30 280 -15 C380 -60 480 20 580 -25 C680 -70 780 10 880 -40" 
-            stroke="#6ce0c5" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
+      <path d="M0 0 C80 -30 180 30 280 -15 C380 -60 480 20 580 -25 C680 -70 780 10 880 -40" stroke="#6ce0c5" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.45"/>
     </g>
   </defs>
-
-  <!-- Taiwanese Summer Night Workshop Base -->
   <rect width="1440" height="800" fill="#091414"/>
   <rect width="1440" height="800" fill="url(#summer-room)"/>
-
-  <!-- Left Lower Corner: Roaring Industrial Electric Fan (Blasting diagonally across screen) -->
   <g id="blasting-fan" transform="translate(180, 560)">
-    <!-- Base stand -->
     <path d="M-50 180 L50 180 L35 150 L-35 150 Z" fill="#142927" stroke="#2d5c56" stroke-width="3"/>
     <line x1="0" y1="150" x2="0" y2="30" stroke="#224540" stroke-width="9"/>
-    
-    <!-- Fan Cage Angled Diagonally Upward -->
     <g transform="translate(0, 20) rotate(22)">
-      <!-- Fan cage -->
       <circle cx="0" cy="0" r="110" stroke="#366e66" stroke-width="3.5" fill="#0e1f1e" opacity="0.75"/>
       <circle cx="0" cy="0" r="80" stroke="#366e66" stroke-width="1.8" fill="none" opacity="0.5"/>
       <circle cx="0" cy="0" r="40" stroke="#366e66" stroke-width="1.5" fill="none" opacity="0.4"/>
       <line x1="-110" y1="0" x2="110" y2="0" stroke="#366e66" stroke-width="1.8"/>
       <line x1="0" y1="-110" x2="0" y2="110" stroke="#366e66" stroke-width="1.8"/>
-
-      <!-- Rapidly Spinning Mint Green Blades (0.2s blur) -->
       <g opacity="0.6">
         <animateTransform attributeName="transform" type="rotate" values="0; 360" dur="0.2s" repeatCount="indefinite"/>
         <path d="M0 0 C35 -55 70 -35 60 0 C40 25 20 10 0 0 Z" fill="#6ce0c5"/>
@@ -53,109 +37,82 @@
       <circle cx="0" cy="0" r="18" fill="#1f3d39" stroke="#6ce0c5" stroke-width="2.5"/>
     </g>
   </g>
-
-  <!-- DIAGONAL WIND GUSTS SWEEPING ACROSS THE ENTIRE CANVAS (Bottom-Left to Top-Right: 2.5s loop) -->
   <g id="wind-system">
-    <g transform="translate(240, 520) rotate(-22)">
-      <use href="#gust-streamer"/>
+    <g>
       <animateTransform attributeName="transform" type="translate" values="200 560; 900 240; 1600 -80" dur="2.4s" repeatCount="indefinite" calcMode="linear"/>
       <animate attributeName="opacity" values="0.1;0.8;0.9;0" dur="2.4s" repeatCount="indefinite"/>
+      <g transform="rotate(-22)">
+        <use href="#gust-streamer"/>
+      </g>
     </g>
-    <g transform="translate(260, 580) rotate(-20)">
-      <use href="#gust-streamer"/>
+    <g>
       <animateTransform attributeName="transform" type="translate" values="160 620; 860 300; 1560 -20" dur="2.8s" repeatCount="indefinite" calcMode="linear"/>
       <animate attributeName="opacity" values="0.1;0.7;0.85;0" dur="2.8s" repeatCount="indefinite"/>
+      <g transform="rotate(-20)">
+        <use href="#gust-streamer"/>
+      </g>
     </g>
-    <g transform="translate(220, 460) rotate(-24)">
-      <use href="#gust-streamer"/>
+    <g>
       <animateTransform attributeName="transform" type="translate" values="240 500; 940 180; 1640 -140" dur="2.1s" repeatCount="indefinite" calcMode="linear"/>
       <animate attributeName="opacity" values="0.1;0.85;0.7;0" dur="2.1s" repeatCount="indefinite"/>
+      <g transform="rotate(-24)">
+        <use href="#gust-streamer"/>
+      </g>
     </g>
   </g>
-
-  <!-- FLYING SCRIPT PAGES TUMBLING ACROSS THE SCREEN (Parallax drift: 4s - 6s) -->
   <g id="tumbling-papers">
-    <!-- Page 1 -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="180 620; 1580 40" dur="4.5s" repeatCount="indefinite" calcMode="linear"/>
+      <animateTransform attributeName="transform" type="translate" values="180 620; 1580 40" dur="4.5s" repeatCount="indefinite" calcMode="linear" begin="0s"/>
       <g>
-        <animateTransform attributeName="transform" type="rotate" values="0; 720" dur="4.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" values="0; 720" dur="4.5s" repeatCount="indefinite" begin="0s"/>
         <use href="#flying-script-page" transform="scale(0.85)"/>
       </g>
+      <animate attributeName="opacity" values="0;1;1;0" dur="4.5s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="0s"/>
     </g>
-    <!-- Page 2 (Offset) -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="260 580; 1660 120" dur="5.2s" repeatCount="indefinite" calcMode="linear"/>
+      <animateTransform attributeName="transform" type="translate" values="260 580; 1660 120" dur="5.2s" repeatCount="indefinite" calcMode="linear" begin="-1.2s"/>
       <g>
-        <animateTransform attributeName="transform" type="rotate" values="45; -680" dur="5.2s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" values="45; -680" dur="5.2s" repeatCount="indefinite" begin="-1.2s"/>
         <use href="#flying-script-page" transform="scale(0.7)"/>
       </g>
+      <animate attributeName="opacity" values="0;1;1;0" dur="5.2s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="-1.2s"/>
     </g>
-    <!-- Page 3 -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="120 700; 1520 180" dur="3.8s" repeatCount="indefinite" calcMode="linear"/>
+      <animateTransform attributeName="transform" type="translate" values="120 700; 1520 180" dur="3.8s" repeatCount="indefinite" calcMode="linear" begin="-2.4s"/>
       <g>
-        <animateTransform attributeName="transform" type="rotate" values="-30; 540" dur="3.8s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" values="-30; 540" dur="3.8s" repeatCount="indefinite" begin="-2.4s"/>
         <use href="#flying-script-page" transform="scale(0.95)"/>
       </g>
+      <animate attributeName="opacity" values="0;1;1;0" dur="3.8s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="-2.4s"/>
     </g>
   </g>
-
-  <!-- JUBILANT ACTOR LEAPING ACROSS THE REHEARSAL HALL (Left-to-Right bounding traversal: 7s cycle) -->
   <g id="leaping-actor">
-    <!-- Full-screen traverse -->
     <animateTransform attributeName="transform" type="translate" values="-260 510; 1680 510" dur="7s" repeatCount="indefinite" calcMode="linear"/>
-
-    <!-- Joyous bounding arc up & down -->
     <g>
-      <animateTransform attributeName="transform" type="translate"
-        values="0 0; 0 -45; 0 0; 0 -45; 0 0"
-        dur="1.75s" repeatCount="indefinite" calcMode="spline" keySplines="0.2 0.8 0.4 1;0.4 0 0.2 1;0.2 0.8 0.4 1;0.4 0 0.2 1"/>
-
-      <!-- Dynamic physical silhouette (Triumph, sweating, ecstatic) -->
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -45; 0 0; 0 -45; 0 0" dur="1.75s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 .3 1; .5 0 1 1; 0 0 .3 1; .5 0 1 1"/>
       <path d="M-15 15 C-22 -35 -15 -95 10 -155 C28 -95 25 -35 15 15 Z" fill="#0d1f1d" stroke="#6ce0c5" stroke-width="2.5"/>
       <circle cx="16" cy="-185" r="22" fill="#0d1f1d" stroke="#6ce0c5" stroke-width="2.5"/>
-
-      <!-- Leaping stride legs -->
       <path d="M-10 15 L-45 55 L-20 75" stroke="#6ce0c5" stroke-width="4.5" stroke-linecap="round" fill="none">
-        <animate attributeName="d"
-          values="M-10 15 L-45 55 L-20 75; M-10 15 L35 45 L55 70; M-10 15 L-45 55 L-20 75"
-          dur="1.75s" repeatCount="indefinite"/>
+        <animate attributeName="d" values="M-10 15 L-45 55 L-20 75; M-10 15 L35 45 L55 70; M-10 15 L-45 55 L-20 75" dur="1.75s" repeatCount="indefinite"/>
       </path>
       <path d="M10 15 L45 50 L65 72" stroke="#48b8a0" stroke-width="4.5" stroke-linecap="round" fill="none">
-        <animate attributeName="d"
-          values="M10 15 L45 50 L65 72; M10 15 L-35 50 L-10 75; M10 15 L45 50 L65 72"
-          dur="1.75s" repeatCount="indefinite"/>
+        <animate attributeName="d" values="M10 15 L45 50 L65 72; M10 15 L-35 50 L-10 75; M10 15 L45 50 L65 72" dur="1.75s" repeatCount="indefinite"/>
       </path>
-
-      <!-- Expressive arms thrown wide open to the wind and joy -->
       <path d="M-5 -110 L-65 -150 L-95 -130" stroke="#f6dfa5" stroke-width="3.5" stroke-linecap="round" fill="none"/>
       <path d="M15 -110 L65 -145 L105 -165" stroke="#f6dfa5" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-      <!-- Splashes of perspiration turned into golden triumphant sparks -->
       <circle cx="-35" cy="-140" r="3" fill="#ffe08a"/>
       <circle cx="75" cy="-135" r="3.5" fill="#6ce0c5"/>
       <circle cx="20" cy="-215" r="2.5" fill="#ffffff"/>
     </g>
   </g>
-
-  <!-- FOREGROUND: STEAMING CHENG-JI BRAISED PORK RICE BOWL (Crossing in foreground: 8s cycle) -->
   <g id="foreground-pork-bowl">
     <animateTransform attributeName="transform" type="translate" values="1680 640; -340 640" dur="8s" repeatCount="indefinite" calcMode="linear"/>
-
-    <!-- Bowl Shadow -->
     <ellipse cx="0" cy="55" rx="85" ry="18" fill="#060c0c" opacity="0.8"/>
-
-    <!-- Ceramic Bowl -->
     <path d="M-80 0 C-80 55 -45 75 0 75 C45 75 80 55 80 0 Z" fill="#f5ede1" stroke="#1c3834" stroke-width="3"/>
     <ellipse cx="0" cy="0" rx="80" ry="18" fill="#ecd9b8"/>
-    <!-- Braised Pork Glistening Slab -->
     <path d="M-40 -5 C-45 -22 -15 -32 20 -25 C45 -18 50 5 25 12 C5 18 -35 15 -40 -5 Z" fill="#8c3314" stroke="#bf5226" stroke-width="2.5"/>
     <ellipse cx="-8" cy="-12" rx="28" ry="10" fill="#b84c20" opacity="0.9"/>
     <path d="M-20 -18 Q0 -25 15 -20" stroke="#fed87d" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-    <!-- Sizzling Savory Aroma Ribbon Billowing Backwards -->
-    <path d="M0 -30 C60 -70 120 -50 180 -110 C240 -170 320 -140 400 -210" 
-          stroke="#fed87d" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.45"/>
+    <path d="M0 -30 C60 -70 120 -50 180 -110 C240 -170 320 -140 400 -210" stroke="#fed87d" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.45"/>
   </g>
 </svg>

@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <!-- Continuous SMIL scene; timing and loop design: docs/ANIMATION_STORYBOARD.md. -->
   <defs>
-    <!-- Deep nocturnal Mediterranean gradient -->
     <linearGradient id="night-sea-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#060b17"/>
       <stop offset="45%" stop-color="#0a1329"/>
       <stop offset="100%" stop-color="#122442"/>
     </linearGradient>
-
-    <!-- Shimmering coastal cities light cluster -->
     <g id="city-lights">
       <circle cx="0" cy="0" r="2.5" fill="#f8d888" opacity="0.8"/>
       <circle cx="18" cy="6" r="3" fill="#e8984a" opacity="0.85"/>
@@ -17,130 +15,110 @@
       <circle cx="95" cy="10" r="3" fill="#e8984a" opacity="0.8"/>
       <circle cx="120" cy="-2" r="2.5" fill="#ffd868" opacity="0.85"/>
     </g>
-
-    <!-- Flowing sea wave curve -->
     <g id="wave-fast">
-      <path d="M0 0 C60 -12 140 12 220 0 C300 -12 380 12 460 0 C540 -12 620 12 700 0" 
-            stroke="#3a6485" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.45"/>
+      <path d="M0 0 C60 -12 140 12 220 0 C300 -12 380 12 460 0 C540 -12 620 12 700 0" stroke="#3a6485" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.45"/>
     </g>
-  </defs>
-
-  <!-- Mediterranean Night Base -->
-  <rect width="1440" height="800" fill="url(#night-sea-grad)"/>
-
-  <!-- Distant Starlight & Night Constellations (Moving with gentle drift) -->
-  <g opacity="0.65">
-    <circle cx="210" cy="90" r="1.5" fill="#eef3fc"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" repeatCount="indefinite"/></circle>
-    <circle cx="450" cy="140" r="2.2" fill="#fffbe8"><animate attributeName="opacity" values="0.9;0.2;0.9" dur="3.2s" repeatCount="indefinite"/></circle>
-    <circle cx="780" cy="70" r="1.8" fill="#eef3fc"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.8s" repeatCount="indefinite"/></circle>
-    <circle cx="1120" cy="110" r="2" fill="#fffbe8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.6s" repeatCount="indefinite"/></circle>
-    <circle cx="1340" cy="80" r="1.5" fill="#eef3fc"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.2s" repeatCount="indefinite"/></circle>
-  </g>
-
-  <!-- Barcelona / Mediterranean Coastline with City Lights (Parallax sliding left: 8s cycle) -->
-  <g id="coastal-horizon" transform="translate(0, 520)">
-    <!-- Coastline silhouette in Catalan earth tones -->
-    <path d="M-200 60 Q200 20 600 50 T1400 30 T2000 60 L2000 280 L-200 280 Z" fill="#080e1a"/>
-    <path d="M-200 75 Q240 45 680 70 T1480 50 T2000 80" stroke="#b86237" stroke-width="2.5" fill="none" opacity="0.55"/>
-
-    <!-- City Lights clusters rushing right-to-left along the coast (8s) -->
-    <g>
-      <animateTransform attributeName="transform" type="translate" values="200 0; -600 0" dur="8s" repeatCount="indefinite" calcMode="linear"/>
+    <pattern id="city-loop" patternUnits="userSpaceOnUse" width="800" height="800" y="0">
       <use href="#city-lights" x="100" y="70"/>
       <use href="#city-lights" x="350" y="80"/>
       <use href="#city-lights" x="650" y="65"/>
-      <use href="#city-lights" x="950" y="85"/>
-      <use href="#city-lights" x="1250" y="72"/>
-      <use href="#city-lights" x="1550" y="78"/>
+      <animateTransform attributeName="patternTransform" values="0 0; -800 0" dur="8s" repeatCount="indefinite" calcMode="linear" type="translate"/>
+    </pattern>
+    <pattern id="cloud-loop-0" patternUnits="userSpaceOnUse" width="800" height="800" y="0">
+      <path d="M0 350 C133.333 320 266.667 380 400 350 C533.333 320 666.667 380 800 350" stroke="#5c87aa" stroke-width="36" stroke-linecap="round" fill="none"/>
+      <animateTransform attributeName="patternTransform" values="0 0; -800 0" dur="8s" repeatCount="indefinite" calcMode="linear" type="translate"/>
+    </pattern>
+    <pattern id="cloud-loop-1" patternUnits="userSpaceOnUse" width="800" height="800" y="0">
+      <path d="M0 430 C133.333 400 266.667 460 400 430 C533.333 400 666.667 460 800 430" stroke="#416685" stroke-width="26" stroke-linecap="round" fill="none"/>
+      <animateTransform attributeName="patternTransform" values="0 0; -800 0" dur="6.5s" repeatCount="indefinite" calcMode="linear" type="translate"/>
+    </pattern>
+    <pattern id="cloud-loop-2" patternUnits="userSpaceOnUse" width="1100" height="800" y="0">
+      <path d="M0 660 C183.333 630 366.667 690 550 660 C733.333 630 916.667 690 1100 660" stroke="#7ea8cc" stroke-width="70" stroke-linecap="round" fill="none"/>
+      <animateTransform attributeName="patternTransform" values="0 0; -1100 0" dur="4.5s" repeatCount="indefinite" calcMode="linear" type="translate"/>
+    </pattern>
+  </defs>
+  <rect width="1440" height="800" fill="url(#night-sea-grad)"/>
+  <g opacity="0.65">
+    <circle cx="210" cy="90" r="1.5" fill="#eef3fc">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="140" r="2.2" fill="#fffbe8">
+      <animate attributeName="opacity" values="0.9;0.2;0.9" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="780" cy="70" r="1.8" fill="#eef3fc">
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1120" cy="110" r="2" fill="#fffbe8">
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1340" cy="80" r="1.5" fill="#eef3fc">
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <g id="coastal-horizon" transform="translate(0, 520)">
+    <path d="M-200 60 Q200 20 600 50 T1400 30 T2000 60 L2000 280 L-200 280 Z" fill="#080e1a"/>
+    <path d="M-200 75 Q240 45 680 70 T1480 50 T2000 80" stroke="#b86237" stroke-width="2.5" fill="none" opacity="0.55"/>
+    <g>
+      <rect x="0" y="0" width="1440" height="280" fill="url(#city-loop)"/>
     </g>
-
-    <!-- Deep sea waves rushing under the flight path (6s cycle) -->
     <g transform="translate(0, 110)">
-      <use href="#wave-fast" x="0"/><use href="#wave-fast" x="700"/><use href="#wave-fast" x="1400"/>
-      <animateTransform attributeName="transform" type="translate" values="0 110; -700 110" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+      <use href="#wave-fast" x="0"/>
+      <use href="#wave-fast" x="700"/>
+      <use href="#wave-fast" x="1400"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -700 0" dur="6s" repeatCount="indefinite" calcMode="linear" additive="sum"/>
+      <use href="#wave-fast" x="2100"/>
     </g>
     <g transform="translate(-150, 160)">
-      <use href="#wave-fast" x="0"/><use href="#wave-fast" x="700"/><use href="#wave-fast" x="1400"/>
-      <animateTransform attributeName="transform" type="translate" values="0 160; -700 160" dur="4.8s" repeatCount="indefinite" calcMode="linear"/>
+      <use href="#wave-fast" x="0"/>
+      <use href="#wave-fast" x="700"/>
+      <use href="#wave-fast" x="1400"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -700 0" dur="4.8s" repeatCount="indefinite" calcMode="linear" additive="sum"/>
+      <use href="#wave-fast" x="2100"/>
     </g>
     <g transform="translate(-80, 220)">
-      <use href="#wave-fast" x="0"/><use href="#wave-fast" x="700"/><use href="#wave-fast" x="1400"/>
-      <animateTransform attributeName="transform" type="translate" values="0 220; -700 220" dur="3.8s" repeatCount="indefinite" calcMode="linear"/>
+      <use href="#wave-fast" x="0"/>
+      <use href="#wave-fast" x="700"/>
+      <use href="#wave-fast" x="1400"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -700 0" dur="3.8s" repeatCount="indefinite" calcMode="linear" additive="sum"/>
+      <use href="#wave-fast" x="2100"/>
     </g>
   </g>
-
-  <!-- Midground Clouds Gliding Across (8s cycle) -->
   <g opacity="0.35">
-    <path d="M-300 360 C-150 320 80 390 320 350 C580 310 820 370 1080 330 C1320 290 1560 360 1800 320" 
-          stroke="#5c87aa" stroke-width="36" stroke-linecap="round" fill="none">
-      <animateTransform attributeName="transform" type="translate" values="240 0; -560 0" dur="8s" repeatCount="indefinite" calcMode="linear"/>
-    </path>
-    <path d="M-200 440 C0 410 240 470 480 430 C720 390 980 460 1220 420 C1480 380 1720 440 1960 410" 
-          stroke="#416685" stroke-width="26" stroke-linecap="round" fill="none">
-      <animateTransform attributeName="transform" type="translate" values="160 0; -640 0" dur="6.5s" repeatCount="indefinite" calcMode="linear"/>
-    </path>
-  </g>
-
-  <!-- THE AIRPLANE TRAVERSING THE CANVAS (Slanted Glide: Top-Right to Bottom-Left - 7.5s cycle) -->
-  <g id="flight-airplane">
-    <!-- Whole plane translates diagonally across the screen -->
-    <animateTransform attributeName="transform" type="translate"
-      values="1680 140; -380 480"
-      dur="7.5s" repeatCount="indefinite" calcMode="linear"/>
-
-    <!-- Subtle in-flight turbulence roll (1.8s) -->
     <g>
-      <animateTransform attributeName="transform" type="rotate"
-        values="-12 0 0; -14 0 0; -11 0 0; -13 0 0; -12 0 0"
-        dur="1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
-
-      <!-- Condensation Vapor Contrail Lines Behind Wings -->
+      <rect x="0" y="0" width="1440" height="800" fill="url(#cloud-loop-0)"/>
+    </g>
+    <g>
+      <rect x="0" y="0" width="1440" height="800" fill="url(#cloud-loop-1)"/>
+    </g>
+  </g>
+  <g id="flight-airplane">
+    <animateTransform attributeName="transform" type="translate" values="1680 140; -550 480" dur="7.5s" repeatCount="indefinite" calcMode="linear"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="-12 0 0; -14 0 0; -11 0 0; -13 0 0; -12 0 0" dur="1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
       <path d="M120 -15 L380 -60" stroke="#71a2c9" stroke-width="4.5" stroke-linecap="round" opacity="0.4"/>
       <path d="M80 65 L360 40" stroke="#71a2c9" stroke-width="3.5" stroke-linecap="round" opacity="0.35"/>
-
-      <!-- Sleek Airplane Fuselage & Swept Wings (Hand-drawn jet silhouette) -->
-      <!-- Main Fuselage -->
-      <path d="M-180 25 C-120 15 -40 18 60 22 C140 25 190 28 220 32 L200 48 C140 44 40 40 -60 38 C-140 36 -170 30 -180 25 Z" 
-            fill="#121b2a" stroke="#8cb4d6" stroke-width="2"/>
-      
-      <!-- Cockpit Windshield Glint (Cyan spark) -->
+      <path d="M-180 25 C-120 15 -40 18 60 22 C140 25 190 28 220 32 L200 48 C140 44 40 40 -60 38 C-140 36 -170 30 -180 25 Z" fill="#121b2a" stroke="#8cb4d6" stroke-width="2"/>
       <path d="M-170 24 L-150 22 L-145 28 L-165 30 Z" fill="#6fe0c8" opacity="0.9"/>
-
-      <!-- Left Swept Wing (Towards viewer) -->
       <path d="M-30 35 L60 160 L95 155 L40 36 Z" fill="#182436" stroke="#8cb4d6" stroke-width="2"/>
-      <!-- Upward Winglet Tip -->
       <path d="M60 160 L68 190 L85 185 L95 155 Z" fill="#1e2e45"/>
-
-      <!-- Right Swept Wing (Behind fuselage) -->
       <path d="M-40 18 L30 -110 L58 -108 L20 20 Z" fill="#0f1724" stroke="#688baa" stroke-width="1.8"/>
       <path d="M30 -110 L35 -135 L50 -132 L58 -108 Z" fill="#1e2e45"/>
-
-      <!-- Tail Stabilizers -->
       <path d="M170 26 L230 -40 L250 -38 L210 29 Z" fill="#182436" stroke="#8cb4d6" stroke-width="1.8"/>
-
-      <!-- Blinking Wingtip Navigation Strobes (Red & Green/White - 1s period) -->
-      <!-- Left Wingtip Red Strobe -->
       <circle cx="68" cy="188" r="6" fill="#f25f5c">
         <animate attributeName="opacity" values="0.1;1;0.1;0.1" keyTimes="0;0.15;0.3;1" dur="1s" repeatCount="indefinite"/>
         <animate attributeName="r" values="5;11;5;5" keyTimes="0;0.15;0.3;1" dur="1s" repeatCount="indefinite"/>
       </circle>
-      <!-- Halo -->
       <circle cx="68" cy="188" r="28" fill="#f25f5c" opacity="0">
         <animate attributeName="opacity" values="0;0.45;0;0" keyTimes="0;0.15;0.35;1" dur="1s" repeatCount="indefinite"/>
       </circle>
-
-      <!-- Right Wingtip White Strobe -->
       <circle cx="35" cy="-134" r="5" fill="#ffffff">
         <animate attributeName="opacity" values="0.2;1;0.2;0.2" keyTimes="0;0.15;0.3;1" dur="1s" repeatCount="indefinite"/>
       </circle>
     </g>
   </g>
-
-  <!-- Foreground Volumetric Cloud Bank Sweeping Rushing Past Lens (4.5s cycle) -->
   <g id="foreground-clouds" opacity="0.45">
-    <path d="M-200 680 C0 620 280 720 540 660 C820 600 1100 700 1380 640 C1640 580 1880 680 2100 620" 
-          stroke="#7ea8cc" stroke-width="70" stroke-linecap="round" fill="none">
-      <animateTransform attributeName="transform" type="translate" values="300 0; -800 0" dur="4.5s" repeatCount="indefinite" calcMode="linear"/>
-    </path>
+    <g>
+      <rect x="0" y="0" width="1440" height="800" fill="url(#cloud-loop-2)"/>
+    </g>
   </g>
 </svg>

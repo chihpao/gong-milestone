@@ -58,9 +58,9 @@ The user permits a frontend framework or animation library if it materially impr
 
 - Design mobile-first from 360px upward.
 - The current direction is inspired by the mobile experience of `https://www.izumi-tanaka.com/`: full-viewport opening, light fixed navigation, generous whitespace, and consecutive full-width scenes. Do not copy its images, branding, animation assets, or source code.
-- Keep the interface anchored in warm white, near-black, and cool mint green. Individual animation scenes may add indigo, cobalt, teal, purple-gray, moss, and cool yellow-white according to `docs/ANIMATION_STORYBOARD.md`; do not use orange or red-orange.
-- Keep the site visually simple: no card grid, decorative icons, shadows, background texture, or unnecessary containers.
-- Use Noto Sans TC for Chinese text and Montserrat for dates/Latin text.
+- Keep the interface anchored in warm white, near-black, and cool mint green. Individual animation scenes may add indigo, cobalt, teal, purple-gray, moss, and cool yellow-white according to `docs/ANIMATION_STORYBOARD.md`; the user accepted the existing orange/red-orange accents during the 2026-09-22 final review; preserve the accepted scene palettes.
+- Keep the site visually simple: no card grid, decorative icons, background texture, or unnecessary containers. Existing text shadows and the small translucent navigation control are intentional readability aids.
+- Use Noto Sans TC for Chinese text, PT Sans for panel dates, and Montserrat for the menu/Latin motto.
 - Preserve purposeful motion only. Always support `prefers-reduced-motion`.
 - Preserve keyboard usability, touch targets, semantic HTML, and A4 print styles.
 
@@ -68,13 +68,13 @@ The user permits a frontend framework or animation library if it materially impr
 
 1. Fixed header with site name.
 2. A full-screen year menu opened by the fixed hamburger button at every viewport size.
-3. Compact mobile opening screen (`20svh`, minimum 120px); `100svh` on desktop.
+3. Compact mobile opening screen (`20svh`, minimum 120px); `25svh` (minimum 180px) on desktop.
 4. Eleven consecutive milestone scenes grouped into four anchor sections, including the 2020/02 first performance on the Théâtre du Soleil stage in chronological order before the pandemic return scene.
-5. A combined `2024/09-2025/05` scene containing the France classes, monthly praise, and teacher quotation.
+5. A `2024/09—2025/05` scene containing the France classes; removed praise and teacher quotation must not be restored.
 6. The 2025/06 mask-class scene.
 7. A standalone `Shitty but proud.` scene as the final section.
 
-All milestone copy appears in a centered bordered foreground panel when its scene becomes current, over the continuously moving SVG background.
+Milestone copy appears as centered white text without a box. Mobile uses a full-scene native toggle button; desktop reveals text as the scene becomes current. Reduced motion, print, and no-JavaScript rendering show all text. Background SVGs continue independently.
 
 Milestone backgrounds must run continuously from page load rather than enter, exit, or restart with scroll state. Every scene combines horizontal and vertical motion, including both a linear traveling layer and non-linear ambient movement.
 
@@ -109,7 +109,7 @@ Milestone backgrounds must run continuously from page load rather than enter, ex
 - The hamburger button and full-screen year menu work at mobile and desktop widths.
 - No browser console errors.
 - All milestone text matches `docs/CONTENT_SOURCE.md`.
-- No invented narrative copy or orange/red-orange design values are introduced.
+- No invented milestone copy is introduced; preserve the user-approved animation palettes.
 - Reduced-motion and A4 print behavior remain intact.
 
 ## Completion and handoff

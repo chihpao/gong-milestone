@@ -1,29 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <!-- Continuous SMIL scene; timing and loop design: docs/ANIMATION_STORYBOARD.md. -->
   <defs>
-    <!-- Kyoto Night Midnight Atmosphere -->
     <radialGradient id="kyoto-tunnel-glow" cx="0.5" cy="0.48" r="0.6">
       <stop offset="0%" stop-color="#f5ba58" stop-opacity="0.32"/>
       <stop offset="35%" stop-color="#8c2e39" stop-opacity="0.18"/>
       <stop offset="70%" stop-color="#191122" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#0a070f" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Torii Gate Model (Scaled & Translated dynamically to create 3D zoom-through) -->
     <g id="torii-structure">
-      <!-- Kasagi (Curved upper beam) -->
       <path d="M-280 -180 C-120 -195 120 -195 280 -180 L290 -155 C120 -168 -120 -168 -290 -155 Z" fill="#9e2836"/>
       <rect x="-240" y="-150" width="480" height="20" fill="#781d28"/>
-      <!-- Tie beam (Nuki) -->
       <rect x="-220" y="-80" width="440" height="18" fill="#9e2836"/>
-      <!-- Left & Right Hashira (Pillars) -->
       <line x1="-160" y1="-140" x2="-180" y2="280" stroke="#9e2836" stroke-width="32" stroke-linecap="square"/>
       <line x1="160" y1="-140" x2="180" y2="280" stroke="#9e2836" stroke-width="32" stroke-linecap="square"/>
-      <!-- Pillar Base Black Cuffs (Kamebara) -->
       <rect x="-205" y="260" width="45" height="25" fill="#110c17"/>
       <rect x="160" y="260" width="45" height="25" fill="#110c17"/>
     </g>
-
-    <!-- Swaying Paper Lantern hanging from Torii side -->
     <g id="swaying-kyoto-lantern">
       <line x1="0" y1="-50" x2="0" y2="-20" stroke="#110c17" stroke-width="3"/>
       <ellipse cx="0" cy="15" rx="36" ry="48" fill="#fce59e" stroke="#1a1122" stroke-width="2.5"/>
@@ -32,15 +24,10 @@
       <line x1="0" y1="65" x2="0" y2="95" stroke="#87293b" stroke-width="4"/>
     </g>
   </defs>
-
-  <!-- Deep Kyoto Autumn Midnight Base -->
   <rect width="1440" height="800" fill="#0c0812"/>
   <rect width="1440" height="800" fill="url(#kyoto-tunnel-glow)"/>
-
-  <!-- Vanishing Point Stone Path (Perspective Convergence) -->
   <g id="stone-path">
     <polygon points="560,800 880,800 730,420 710,420" fill="#160f1e"/>
-    <!-- Stepping stone transverse cuts racing towards viewer (1.5s loop) -->
     <g>
       <line x1="580" y1="760" x2="860" y2="760" stroke="#2c1e38" stroke-width="3"/>
       <line x1="620" y1="680" x2="820" y2="680" stroke="#2c1e38" stroke-width="2.5"/>
@@ -49,63 +36,48 @@
       <line x1="695" y1="470" x2="745" y2="470" stroke="#2c1e38" stroke-width="1.5"/>
     </g>
   </g>
-
-  <!-- 3D ZOOM-THROUGH TORII GATES (Rushing forward from vanishing point and flying past lens: 3s loop) -->
-  <!-- Gate 1: Starts in distance, scales to screen-filling foreground and flies past -->
   <g transform="translate(720, 420)">
-    <animateTransform attributeName="transform" type="scale"
-      values="0.12; 0.35; 0.85; 2.2; 4.5"
-      keyTimes="0; 0.35; 0.65; 0.88; 1"
-      dur="2.4s" repeatCount="indefinite" calcMode="spline"
-      keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1"/>
-    <use href="#torii-structure"/>
+    <g>
+      <animateTransform attributeName="transform" type="scale" values="0.12; 0.35; 0.85; 2.2; 4.5" keyTimes="0; 0.35; 0.65; 0.88; 1" dur="3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1" begin="0s"/>
+      <use href="#torii-structure"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="0s"/>
+    </g>
   </g>
-
-  <!-- Gate 2: Staggered offset (0.8s later) -->
   <g transform="translate(720, 420)">
-    <animateTransform attributeName="transform" type="scale"
-      values="0.12; 0.35; 0.85; 2.2; 4.5"
-      keyTimes="0; 0.35; 0.65; 0.88; 1"
-      dur="2.4s" begin="-0.8s" repeatCount="indefinite" calcMode="spline"
-      keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1"/>
-    <use href="#torii-structure"/>
+    <g>
+      <animateTransform attributeName="transform" type="scale" values="0.12; 0.35; 0.85; 2.2; 4.5" keyTimes="0; 0.35; 0.65; 0.88; 1" dur="3.6s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1"/>
+      <use href="#torii-structure"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="-1.2s"/>
+    </g>
   </g>
-
-  <!-- Gate 3: Staggered offset (1.6s later) -->
   <g transform="translate(720, 420)">
-    <animateTransform attributeName="transform" type="scale"
-      values="0.12; 0.35; 0.85; 2.2; 4.5"
-      keyTimes="0; 0.35; 0.65; 0.88; 1"
-      dur="2.4s" begin="-1.6s" repeatCount="indefinite" calcMode="spline"
-      keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1"/>
-    <use href="#torii-structure"/>
+    <g>
+      <animateTransform attributeName="transform" type="scale" values="0.12; 0.35; 0.85; 2.2; 4.5" keyTimes="0; 0.35; 0.65; 0.88; 1" dur="3.6s" begin="-2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 0.6; 0.4 0 0.8 0.6; 0.2 0.8 0.4 1; 0.2 0.8 0.4 1"/>
+      <use href="#torii-structure"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="-2.4s"/>
+    </g>
   </g>
-
-  <!-- PAPER LANTERNS SWEEPING PAST ALONG THE FLANKS (Expanding & rushing past: 2.4s cycle) -->
-  <!-- Left Lantern Rushing Past -->
   <g id="rushing-lantern-left">
-    <animateTransform attributeName="transform" type="translate" values="660 380; 120 620; -240 850" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.2 0.8 0.4 1"/>
+    <animateTransform attributeName="transform" type="translate" values="660 380; 120 620; -240 850" dur="3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.2 0.8 0.4 1" begin="0s"/>
     <use href="#swaying-kyoto-lantern" transform="scale(1.2)"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="0s"/>
   </g>
-
-  <!-- Right Lantern Rushing Past (Offset) -->
   <g id="rushing-lantern-right">
-    <animateTransform attributeName="transform" type="translate" values="780 380; 1320 620; 1680 850" dur="2.4s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.2 0.8 0.4 1"/>
+    <animateTransform attributeName="transform" type="translate" values="780 380; 1320 620; 1680 850" dur="3.6s" begin="-1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.2 0.8 0.4 1"/>
     <use href="#swaying-kyoto-lantern" transform="scale(1.2)"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" keyTimes="0;.08;.92;1" begin="-1.8s"/>
   </g>
-
-  <!-- RUSHING AUTUMN DRIZZLE STREAKS (Zooming towards camera: 1.2s cycle) -->
   <g id="kyoto-speed-rain" opacity="0.45">
-    <line x1="720" y1="420" x2="320" y2="820" stroke="#a085b8" stroke-width="2.2" stroke-linecap="round">
+    <line x1="720" y1="420" x2="320" y2="820" stroke="#a085b8" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="40 360">
       <animate attributeName="stroke-dashoffset" values="400;0" dur="1s" repeatCount="indefinite"/>
     </line>
-    <line x1="720" y1="420" x2="1120" y2="820" stroke="#a085b8" stroke-width="2.2" stroke-linecap="round">
+    <line x1="720" y1="420" x2="1120" y2="820" stroke="#a085b8" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="40 360">
       <animate attributeName="stroke-dashoffset" values="400;0" dur="1.1s" repeatCount="indefinite"/>
     </line>
-    <line x1="720" y1="420" x2="180" y2="680" stroke="#a085b8" stroke-width="1.8" stroke-linecap="round">
+    <line x1="720" y1="420" x2="180" y2="680" stroke="#a085b8" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="40 360">
       <animate attributeName="stroke-dashoffset" values="400;0" dur="0.9s" repeatCount="indefinite"/>
     </line>
-    <line x1="720" y1="420" x2="1260" y2="680" stroke="#a085b8" stroke-width="1.8" stroke-linecap="round">
+    <line x1="720" y1="420" x2="1260" y2="680" stroke="#a085b8" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="40 360">
       <animate attributeName="stroke-dashoffset" values="400;0" dur="1.2s" repeatCount="indefinite"/>
     </line>
   </g>

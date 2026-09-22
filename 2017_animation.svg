@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <!-- Continuous SMIL scene; timing and loop design: docs/ANIMATION_STORYBOARD.md. -->
   <defs>
-    <!-- Warm stage beam gradient -->
     <linearGradient id="beam-grad" x1="0" y1="0" x2="0.8" y2="1">
       <stop offset="0%" stop-color="#fff4d4" stop-opacity="0.32"/>
       <stop offset="40%" stop-color="#ecd5a2" stop-opacity="0.18"/>
       <stop offset="85%" stop-color="#cfb070" stop-opacity="0.05"/>
       <stop offset="100%" stop-color="#b89350" stop-opacity="0"/>
     </linearGradient>
-
-    <!-- Single hand-drawn stepping foot footprint (Ink wash) -->
     <g id="step-foot">
       <ellipse cx="0" cy="0" rx="14" ry="28" fill="#0f0c09" opacity="0.85"/>
       <ellipse cx="-2" cy="24" rx="10" ry="12" fill="#0f0c09" opacity="0.9"/>
@@ -17,10 +15,7 @@
       <circle cx="5" cy="-28" r="3.5" fill="#14100c"/>
       <circle cx="12" cy="-22" r="3" fill="#14100c"/>
     </g>
-
-    <!-- Repeating perspective floorboard plank line -->
     <g id="moving-floor">
-      <!-- Perspective diagonal lines -->
       <line x1="-300" y1="800" x2="200" y2="460" stroke="#2c2219" stroke-width="2.5" opacity="0.6"/>
       <line x1="0" y1="800" x2="400" y2="460" stroke="#352a1e" stroke-width="2.2" opacity="0.65"/>
       <line x1="300" y1="800" x2="600" y2="460" stroke="#281e16" stroke-width="2.8" opacity="0.55"/>
@@ -29,33 +24,24 @@
       <line x1="1200" y1="800" x2="1200" y2="460" stroke="#35291f" stroke-width="2.8" opacity="0.55"/>
       <line x1="1500" y1="800" x2="1400" y2="460" stroke="#2c2219" stroke-width="2.5" opacity="0.6"/>
       <line x1="1800" y1="800" x2="1600" y2="460" stroke="#382c20" stroke-width="2.2" opacity="0.6"/>
-      <!-- Horizontal planks -->
       <line x1="-400" y1="520" x2="1840" y2="520" stroke="#1d1610" stroke-width="2" opacity="0.5"/>
       <line x1="-400" y1="590" x2="1840" y2="590" stroke="#1a130e" stroke-width="2.4" opacity="0.55"/>
       <line x1="-400" y1="680" x2="1840" y2="680" stroke="#16100b" stroke-width="3" opacity="0.6"/>
     </g>
   </defs>
-
-  <!-- Base Dark Wood Rehearsal Hall -->
   <rect width="1440" height="800" fill="#120f0c"/>
-
-  <!-- Back Wall & Shifting Shadows (Camera Tracking Parallax: 10s cycle) -->
   <g id="back-wall">
     <polygon points="0,0 1440,0 1440,460 0,460" fill="#181410"/>
-    <!-- Studio window frame cast on wall, panning slowly left (Parallax background) -->
     <g opacity="0.45">
       <animateTransform attributeName="transform" type="translate" values="100 0; -140 0; 100 0" dur="10s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
       <rect x="200" y="40" width="220" height="340" fill="#251e18" stroke="#3d3025" stroke-width="3"/>
       <line x1="310" y1="40" x2="310" y2="380" stroke="#3d3025" stroke-width="3"/>
       <line x1="200" y1="210" x2="420" y2="210" stroke="#3d3025" stroke-width="3"/>
-      
       <rect x="780" y="40" width="220" height="340" fill="#251e18" stroke="#3d3025" stroke-width="3"/>
       <line x1="890" y1="40" x2="890" y2="380" stroke="#3d3025" stroke-width="3"/>
       <line x1="780" y1="210" x2="1000" y2="210" stroke="#3d3025" stroke-width="3"/>
     </g>
   </g>
-
-  <!-- Floorboards with Horizontal Tracking Camera Drift (Midground Parallax) -->
   <g id="floor-layer">
     <polygon points="0,460 1440,460 1440,800 0,800" fill="#1b1510"/>
     <g>
@@ -63,112 +49,67 @@
       <use href="#moving-floor"/>
     </g>
   </g>
-
-  <!-- Multiple Sweeping Light Beams Piercing Downward (Dynamic angles) -->
   <g id="light-shafts" opacity="0.8">
     <polygon points="180,-40 340,-40 980,840 680,840" fill="url(#beam-grad)">
-      <animate attributeName="points"
-        values="
-          180,-40 340,-40 980,840 680,840;
-          240,-40 420,-40 1140,840 820,840;
-          120,-40 280,-40 860,840 560,840;
-          180,-40 340,-40 980,840 680,840
-        "
-        dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <animate attributeName="points" values="           180,-40 340,-40 980,840 680,840;           240,-40 420,-40 1140,840 820,840;           120,-40 280,-40 860,840 560,840;           180,-40 340,-40 980,840 680,840         " dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
     </polygon>
-
-    <!-- Secondary beam tracking across from right -->
     <polygon points="1120,-40 1260,-40 1520,840 1340,840" fill="url(#beam-grad)" opacity="0.4">
       <animateTransform attributeName="transform" type="translate" values="60 0; -180 0; 60 0" dur="10s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
     </polygon>
   </g>
-
-  <!-- ACTOR TRAVERSING ACROSS THE CANVAS (Full-screen left-to-right movement: 10s loop) -->
   <g id="traveling-actor">
-    <!-- Whole actor group moves from -200 (off-screen left) across to 1640 (off-screen right) -->
-    <animateTransform attributeName="transform" type="translate"
-      values="-240 580; 1680 580"
-      dur="10s" repeatCount="indefinite" calcMode="linear"/>
-
-    <!-- Walking bob up & down (0.8s per step gait) -->
+    <animateTransform attributeName="transform" type="translate" values="-240 580; 1980 580" dur="10s" repeatCount="indefinite" calcMode="linear"/>
     <g>
-      <animateTransform attributeName="transform" type="translate"
-        values="0 0; 0 -12; 0 0; 0 -12; 0 0"
-        dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
-
-      <!-- Elongated expressive shadow trailing on floor behind the actor -->
-      <path d="M0 20 C-60 -20 -180 -60 -280 -90 C-360 -110 -420 -115 -390 -95 C-280 -60 -140 -10 -30 25 Z" 
-            fill="#0b0806" opacity="0.65"/>
-
-      <!-- Stepping Feet (Alternating forward stride) -->
-      <!-- Left foot -->
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -12; 0 0; 0 -12; 0 0" dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <path d="M0 20 C-60 -20 -180 -60 -280 -90 C-360 -110 -420 -115 -390 -95 C-280 -60 -140 -10 -30 25 Z" fill="#0b0806" opacity="0.65"/>
       <g transform="translate(-25, 20)">
-        <animateTransform attributeName="transform" type="translate"
-          values="-35 15; 35 10; -35 15"
-          dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+        <animateTransform attributeName="transform" type="translate" values="-35 15; 35 10; -35 15" dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
         <use href="#step-foot" transform="scale(0.85) rotate(-10)"/>
       </g>
-      <!-- Right foot -->
       <g transform="translate(25, 20)">
-        <animateTransform attributeName="transform" type="translate"
-          values="35 10; -35 15; 35 10"
-          dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+        <animateTransform attributeName="transform" type="translate" values="35 10; -35 15; 35 10" dur="1.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
         <use href="#step-foot" transform="scale(0.85) rotate(12)"/>
       </g>
-
-      <!-- Actor Body Silhouette in Motion (Hesitant, observant arrival) -->
       <path d="M-16 10 C-22 -40 -18 -110 0 -180 C18 -110 22 -40 16 10 Z" fill="#100c09" stroke="#f6dfa5" stroke-width="2"/>
       <circle cx="2" cy="-210" r="22" fill="#100c09" stroke="#f6dfa5" stroke-width="2"/>
-
-      <!-- Arms in Walking Swing -->
       <path d="M-10 -130 L-40 -80 L-50 -35" stroke="#f6dfa5" stroke-width="3" stroke-linecap="round" fill="none">
-        <animate attributeName="d"
-          values="M-10 -130 L-40 -80 L-50 -35; M-10 -130 L20 -80 L35 -40; M-10 -130 L-40 -80 L-50 -35"
-          dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="d" values="M-10 -130 L-40 -80 L-50 -35; M-10 -130 L20 -80 L35 -40; M-10 -130 L-40 -80 L-50 -35" dur="1.6s" repeatCount="indefinite"/>
       </path>
       <path d="M10 -130 L40 -80 L50 -35" stroke="#f6dfa5" stroke-width="3" stroke-linecap="round" fill="none">
-        <animate attributeName="d"
-          values="M10 -130 L40 -80 L50 -35; M10 -130 L-20 -80 L-35 -40; M10 -130 L40 -80 L50 -35"
-          dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="d" values="M10 -130 L40 -80 L50 -35; M10 -130 L-20 -80 L-35 -40; M10 -130 L40 -80 L50 -35" dur="1.6s" repeatCount="indefinite"/>
       </path>
     </g>
   </g>
-
-  <!-- Thin Mint Stage Spike Marks on floor that pan past (Visual milestone markers) -->
   <g transform="translate(0, 640)" opacity="0.85">
     <animateTransform attributeName="transform" type="translate" values="300 640; -600 640" dur="10s" repeatCount="indefinite" calcMode="linear"/>
-    <!-- Spike mark 1 -->
     <g transform="translate(400, 0)">
       <path d="M-12 0 L12 0 M0 -12 L0 12" stroke="#71dfc2" stroke-width="3"/>
     </g>
-    <!-- Spike mark 2 -->
     <g transform="translate(950, 40)">
       <path d="M-12 0 L12 0 M0 -12 L0 12" stroke="#71dfc2" stroke-width="3"/>
     </g>
+    <animate attributeName="opacity" values="0;1;1;0" dur="10s" repeatCount="indefinite" keyTimes="0;.08;.92;1"/>
   </g>
-
-  <!-- Foreground Theatre Curtains whipping past in parallax (Left & Right) -->
   <g id="foreground-wings" opacity="0.95">
-    <!-- Left curtain rushing slightly -->
     <path d="M-60 -20 C100 160 40 420 110 680 C130 760 70 820 60 840 L-60 840 Z" fill="#0a0705">
       <animateTransform attributeName="transform" type="translate" values="0 0; -40 0; 0 0" dur="4s" repeatCount="indefinite"/>
     </path>
-    <!-- Right curtain -->
     <path d="M1500 -20 C1380 160 1420 420 1340 680 C1310 760 1380 820 1400 840 L1500 840 Z" fill="#0a0705">
       <animateTransform attributeName="transform" type="translate" values="0 0; 40 0; 0 0" dur="4.6s" repeatCount="indefinite"/>
     </path>
   </g>
-
-  <!-- Atmospheric Light Particles rushing past lens -->
   <g opacity="0.75">
     <circle cx="500" cy="300" r="3" fill="#fff5d4">
       <animateTransform attributeName="transform" type="translate" values="100 0; -300 0" dur="5s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite" keyTimes="0;.08;.92;1"/>
     </circle>
     <circle cx="850" cy="420" r="2.5" fill="#fcebb8">
       <animateTransform attributeName="transform" type="translate" values="150 0; -350 0" dur="4.2s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="4.2s" repeatCount="indefinite" keyTimes="0;.08;.92;1"/>
     </circle>
     <circle cx="1200" cy="250" r="3.5" fill="#ffffff">
       <animateTransform attributeName="transform" type="translate" values="80 0; -420 0" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite" keyTimes="0;.08;.92;1"/>
     </circle>
   </g>
 </svg>

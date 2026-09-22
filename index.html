@@ -29,203 +29,674 @@
       --latin: "Montserrat", var(--sans);
       --pt: "PT Sans", var(--sans);
     }
-    * { box-sizing: border-box; }
-    html { max-width: 100%; scroll-behavior: smooth; }
-    body {
-      max-width: 100%; margin: 0; color: var(--ink); background: var(--paper);
-      font: 400 16px/1.8 var(--sans); overflow-x: hidden; overflow-x: clip;
+
+    * {
+      box-sizing: border-box;
     }
-    body.menu-open { position: fixed; width: 100%; overflow: hidden; }
-    button, a { color: inherit; }
-    button { font: inherit; }
-    svg { display: block; }
-    [hidden] { display: none !important; }
-    ::selection { color: var(--ink); background: var(--mint); }
-    :focus-visible { outline: 2px solid var(--mint-ink); outline-offset: 5px; }
+
+    html {
+      max-width: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      max-width: 100%;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 400 16px/1.8 var(--sans);
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+
+    body.menu-open {
+      position: fixed;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    button,
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    svg {
+      display: block;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    ::selection {
+      color: var(--ink);
+      background: var(--mint);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--mint-ink);
+      outline-offset: 5px;
+    }
 
     /* Fixed navigation and the full-screen year menu. */
     .site-header {
-      position: fixed; inset: 0 0 auto; z-index: 50; width: 100%; height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0 max(20px, env(safe-area-inset-right)) 0 max(20px, env(safe-area-inset-left));
     }
+
     .brand {
-      font: 500 clamp(.95rem, 3.2vw, 1.08rem)/1 var(--sans); letter-spacing: .06em;
-      text-decoration: none; opacity: .92; transition: opacity .2s ease, color .3s ease;
+      font: 500 clamp(.95rem, 3.2vw, 1.08rem)/1 var(--sans);
+      letter-spacing: .06em;
+      text-decoration: none;
+      opacity: .92;
+      transition: opacity .2s ease, color .3s ease;
     }
-    .brand:hover { opacity: 1; }
+
+    .brand:hover {
+      opacity: 1;
+    }
+
     .site-header.is-scrolled .brand {
-      color: #fff; text-shadow: 0 1px 3px #000, 0 2px 8px rgba(0, 0, 0, .7);
+      color: #fff;
+      text-shadow: 0 1px 3px #000, 0 2px 8px rgba(0, 0, 0, .7);
     }
+
     .menu-toggle {
-      position: relative; flex: 0 0 44px; width: 44px; height: 44px; padding: 0;
-      border: 1px solid rgba(0, 0, 0, .08); border-radius: 50%;
-      background: rgba(0, 0, 0, .05); cursor: pointer; touch-action: manipulation;
+      position: relative;
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .05);
+      cursor: pointer;
+      touch-action: manipulation;
       transition: background .25s ease, color .25s ease;
     }
-    .menu-toggle:hover { background: rgba(0, 0, 0, .1); }
+
+    .menu-toggle:hover {
+      background: rgba(0, 0, 0, .1);
+    }
+
     .site-header.is-scrolled .menu-toggle {
-      background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .22);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff;
+      background: rgba(255, 255, 255, .16);
+      border-color: rgba(255, 255, 255, .22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
     }
-    body.menu-open .site-header .brand { color: var(--ink); text-shadow: none; }
+
+    body.menu-open .site-header .brand {
+      color: var(--ink);
+      text-shadow: none;
+    }
+
     body.menu-open .site-header .menu-toggle {
-      color: var(--ink); background: rgba(0, 0, 0, .06); border-color: rgba(0, 0, 0, .08);
-      backdrop-filter: none; -webkit-backdrop-filter: none;
+      color: var(--ink);
+      background: rgba(0, 0, 0, .06);
+      border-color: rgba(0, 0, 0, .08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
+
     .menu-toggle span {
-      position: absolute; left: 11px; width: 20px; height: 1.5px;
-      background: currentColor; border-radius: 1px;
+      position: absolute;
+      left: 11px;
+      width: 20px;
+      height: 1.5px;
+      background: currentColor;
+      border-radius: 1px;
       transition: transform .32s cubic-bezier(.4, 0, .2, 1), top .32s ease, opacity .2s ease;
     }
-    .menu-toggle span:nth-child(1) { top: 14px; }
-    .menu-toggle span:nth-child(2) { top: 20px; }
-    .menu-toggle span:nth-child(3) { top: 26px; }
-    body.menu-open .menu-toggle span:nth-child(1) { top: 20px; transform: rotate(45deg); }
-    body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    body.menu-open .menu-toggle span:nth-child(3) { top: 20px; transform: rotate(-45deg); }
+
+    .menu-toggle span:nth-child(1) {
+      top: 14px;
+    }
+
+    .menu-toggle span:nth-child(2) {
+      top: 20px;
+    }
+
+    .menu-toggle span:nth-child(3) {
+      top: 26px;
+    }
+
+    body.menu-open .menu-toggle span:nth-child(1) {
+      top: 20px;
+      transform: rotate(45deg);
+    }
+
+    body.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    body.menu-open .menu-toggle span:nth-child(3) {
+      top: 20px;
+      transform: rotate(-45deg);
+    }
+
     .menu-panel {
-      position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column;
-      justify-content: flex-start; max-width: 100%; overflow-y: auto;
-      padding: max(76px, env(safe-area-inset-top)) max(32px, env(safe-area-inset-right))
-        max(32px, env(safe-area-inset-bottom)) max(32px, env(safe-area-inset-left));
-      overscroll-behavior: contain; background: var(--paper);
-      visibility: hidden; opacity: 0; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 100%;
+      overflow-y: auto;
+      padding: max(76px, env(safe-area-inset-top)) max(32px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(32px, env(safe-area-inset-left));
+      overscroll-behavior: contain;
+      background: var(--paper);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity .3s ease;
     }
-    body.menu-open .menu-panel { visibility: visible; opacity: 1; pointer-events: auto; }
+
+    body.menu-open .menu-panel {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     .menu-panel a {
-      display: block; flex: 0 0 auto; padding: 13px 0; border-bottom: 1px solid var(--line);
-      font: 500 clamp(1.5rem, 8vw, 2.4rem)/1.4 var(--latin); letter-spacing: .06em;
-      overflow-wrap: anywhere; text-decoration: none; opacity: 0; transform: translateY(12px);
+      display: block;
+      flex: 0 0 auto;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font: 500 clamp(1.5rem, 8vw, 2.4rem)/1.4 var(--latin);
+      letter-spacing: .06em;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(12px);
       transition: transform .35s cubic-bezier(.2, .7, .2, 1), opacity .35s ease, color .2s ease;
     }
-    body.menu-open .menu-panel a { opacity: 1; transform: none; }
-    body.menu-open .menu-panel a:nth-child(2) { transition-delay: .04s; }
-    body.menu-open .menu-panel a:nth-child(3) { transition-delay: .08s; }
-    body.menu-open .menu-panel a:nth-child(4) { transition-delay: .12s; }
-    .menu-panel a:is(:hover, :focus-visible, .is-active) { color: var(--mint-ink); }
+
+    body.menu-open .menu-panel a {
+      opacity: 1;
+      transform: none;
+    }
+
+    body.menu-open .menu-panel a:nth-child(2) {
+      transition-delay: .04s;
+    }
+
+    body.menu-open .menu-panel a:nth-child(3) {
+      transition-delay: .08s;
+    }
+
+    body.menu-open .menu-panel a:nth-child(4) {
+      transition-delay: .12s;
+    }
+
+    .menu-panel a:is(:hover, :focus-visible, .is-active) {
+      color: var(--mint-ink);
+    }
 
     .hero {
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
-      height: 20svh; min-height: 120px; padding: 56px 0 10px; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      height: 20svh;
+      min-height: 120px;
+      padding: 56px 0 10px;
+      overflow: hidden;
     }
+
     .scroll-indicator {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       margin-left: clamp(32%, 36vw, 40%);
     }
+
     .scroll-label {
-      writing-mode: vertical-rl; text-orientation: mixed;
-      font: 500 .58rem/1 var(--latin); letter-spacing: .38em; opacity: .82;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font: 500 .58rem/1 var(--latin);
+      letter-spacing: .38em;
+      opacity: .82;
       animation: fade-label 1.2s ease .3s both;
     }
-    .scroll-line { width: 1.5px; height: clamp(22px, 3.2svh, 32px); background: rgba(17, 19, 17, .24); overflow: hidden; }
+
+    .scroll-line {
+      width: 1.5px;
+      height: clamp(22px, 3.2svh, 32px);
+      background: rgba(17, 19, 17, .24);
+      overflow: hidden;
+    }
+
     .scroll-line::after {
-      content: ""; display: block; width: 100%; height: 45%; background: var(--ink);
+      content: "";
+      display: block;
+      width: 100%;
+      height: 45%;
+      background: var(--ink);
       animation: scroll-line 2.4s ease-in-out infinite;
     }
-    @keyframes fade-label { from { opacity: 0; transform: translateY(8px); } to { opacity: .82; transform: none; } }
-    @keyframes scroll-line { 0% { transform: translateY(-120%); } 65%, 100% { transform: translateY(280%); } }
-    .period { scroll-margin-top: 60px; }
-    .period:focus { outline: none; }
+
+    @keyframes fade-label {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: .82;
+        transform: none;
+      }
+    }
+
+    @keyframes scroll-line {
+      0% {
+        transform: translateY(-120%);
+      }
+
+      65%,
+      100% {
+        transform: translateY(280%);
+      }
+    }
+
+    .period {
+      scroll-margin-top: 60px;
+    }
+
+    .period:focus {
+      outline: none;
+    }
 
     /* Every background is continuously animated inside its SVG document. */
     .event {
-      position: relative; display: grid; min-height: max(26svh, 200px);
-      isolation: isolate; overflow: hidden; color: #fff; background: #111923;
+      position: relative;
+      display: grid;
+      min-height: max(26svh, 200px);
+      isolation: isolate;
+      overflow: hidden;
+      color: #fff;
+      background: #111923;
     }
-    .event--tone-b { background: #20313b; }
-    .event-art { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-    .art-svg--external { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .art-svg--fallback { display: none; width: min(68vw, 600px); height: 100%; max-height: 76svh; margin: auto; color: var(--mint); }
-    .al { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .af { fill: currentColor; opacity: var(--fill-opacity, .12); }
+
+    .event--tone-b {
+      background: #20313b;
+    }
+
+    .event-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .art-svg--external {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .art-svg--fallback {
+      display: none;
+      width: min(68vw, 600px);
+      height: 100%;
+      max-height: 76svh;
+      margin: auto;
+      color: var(--mint);
+    }
+
+    .al {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .af {
+      fill: currentColor;
+      opacity: var(--fill-opacity, .12);
+    }
+
     .event::after {
-      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
       background: linear-gradient(90deg, rgba(0, 0, 0, .14), rgba(0, 0, 0, .02) 58%, rgba(0, 0, 0, .08));
       transition: background .4s ease;
     }
+
     .event-inner {
-      position: relative; z-index: 2; display: grid; place-items: center;
-      width: 100%; min-width: 0; padding: 8px max(20px, env(safe-area-inset-right))
-        max(14px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      min-width: 0;
+      padding: 8px max(20px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
     }
+
     .event-body {
       --body-size: clamp(1.12rem, 4.2vw, 1.38rem);
-      width: min(100%, 38rem); min-width: 0; margin: 0 auto;
+      width: min(100%, 38rem);
+      min-width: 0;
+      margin: 0 auto;
       padding: clamp(6px, 2vw, 14px) clamp(4px, 1.5vw, 10px);
-      color: #fff; text-align: center; overflow-wrap: anywhere;
+      color: #fff;
+      text-align: center;
+      overflow-wrap: anywhere;
       text-shadow: 0 1px 3px rgba(0, 0, 0, .98), 0 2px 8px rgba(0, 0, 0, .92), 0 4px 18px rgba(0, 0, 0, .85);
     }
-    .event-body p { margin: 0; font-size: var(--body-size); line-height: 1.72; }
-    .event-body p+p { margin-top: 10px; }
+
+    .event-body p {
+      margin: 0;
+      font-size: var(--body-size);
+      line-height: 1.72;
+    }
+
+    .event-body p+p {
+      margin-top: 10px;
+    }
+
     .event-body .panel-date {
-      margin: 0 0 14px; font: 600 clamp(.75rem, 2.4vw, .88rem)/1.35 var(--pt);
+      margin: 0 0 14px;
+      font: 600 clamp(.75rem, 2.4vw, .88rem)/1.35 var(--pt);
       letter-spacing: .12em;
     }
-    .event-body .motto { font: 700 clamp(2.2rem, 9.5vw, 4.5rem)/1.05 var(--latin); letter-spacing: -.03em; }
-    .event-toggle {
-      position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%;
-      border: 0; padding: 0; background: transparent; cursor: pointer; touch-action: manipulation;
+
+    .event-body .motto {
+      font: 700 clamp(2.2rem, 9.5vw, 4.5rem)/1.05 var(--latin);
+      letter-spacing: -.03em;
     }
-    .event-toggle:focus-visible { outline: 2px solid var(--mint); outline-offset: -5px; }
-    .js .event-body { opacity: 0; transform: translateY(24px); transition: opacity .4s ease, transform .5s cubic-bezier(.16, 1, .3, 1); }
-    .js .event.panel-open .event-body { opacity: 1; transform: none; }
-    .event.panel-open::after { background: rgba(0, 0, 0, .45); }
+
+    .event-toggle {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .event-toggle:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: -5px;
+    }
+
+    .js .event-body {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .4s ease, transform .5s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .js .event.panel-open .event-body {
+      opacity: 1;
+      transform: none;
+    }
+
+    .event.panel-open::after {
+      background: rgba(0, 0, 0, .45);
+    }
 
     @media (min-width: 760px) {
-      .site-header { height: 72px; padding-inline: clamp(30px, 5vw, 72px); }
-      .brand { font-size: 1.15rem; }
-      .menu-panel { padding: 92px max(8vw, calc((100vw - 1080px) / 2)) 54px; }
-      .menu-panel a { font-size: clamp(2rem, 4vw, 3.8rem); }
-      .menu-panel a:first-child { margin-top: auto; }
-      .menu-panel a:last-child { margin-bottom: auto; }
-      .hero { height: 25svh; min-height: 180px; padding: 78px 0 20px; }
-      .scroll-indicator { gap: 10px; margin-left: clamp(30%, 34vw, 38%); }
-      .scroll-label { font-size: .82rem; }
-      .scroll-line { height: clamp(26px, 3.5svh, 38px); }
-      .period { scroll-margin-top: 72px; }
-      .event { min-height: max(82svh, 620px); }
-      .event-inner { padding: 110px clamp(40px, 6vw, 96px) 38px; }
-      .event-body { --body-size: clamp(.92rem, 1.05vw, 1.05rem); }
-      .js .event-body { transform: translateY(18px); transition: opacity .45s ease, transform .6s cubic-bezier(.16, 1, .3, 1); }
-      .js .event.is-current .event-body { opacity: 1; transform: none; }
-      .event.is-current::after { background: rgba(0, 0, 0, .4); }
-      .js .event-body>p:not(.panel-date) { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .45s ease; }
-      .js .event-body>p:nth-child(3) { transition-delay: .08s; }
-      .js .event-body>p:nth-child(n+4) { transition-delay: .16s; }
-      .js .event.is-current .event-body>p { opacity: 1; transform: none; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .js .event .event-body, .js .event .event-body>p { opacity: 1; transform: none; }
-      .art-svg--external { display: none; }
-      .art-svg--fallback { display: block; opacity: .65; }
-      .event::after { display: none; }
-      .event-toggle { display: none; }
-    }
-    @page { size: A4 portrait; margin: 13mm; }
-    @media print {
-      *, *::before, *::after { animation: none !important; transition: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      body, body.menu-open { position: static !important; top: auto !important; overflow: visible !important; color: #111; background: #fff; font-size: 10pt; }
-      .site-header, .menu-panel, .hero, .event-toggle, .event::after { display: none !important; }
-      .period { margin: 0; }
-      .event {
-        min-height: 0; grid-template-columns: 28mm minmax(0, 1fr); align-items: center; gap: 6mm;
-        padding: 5mm 0; color: #111; background: #fff !important; border-bottom: 1px solid #bbb;
-        break-inside: avoid; overflow: visible;
+      .site-header {
+        height: 72px;
+        padding-inline: clamp(30px, 5vw, 72px);
       }
-      .event-art { position: static; overflow: visible; }
-      .art-svg--external { display: none; }
-      .art-svg--fallback { display: block; width: 28mm; height: 28mm; max-height: none; color: #333; opacity: 1; }
-      .event-inner { display: block; padding: 0; }
-      .event-body { width: 100%; max-width: none; padding: 0; color: #111; text-align: left; text-shadow: none; }
-      .js .event .event-body, .js .event .event-body>p { opacity: 1; transform: none; }
-      .event-body p { font-size: 10.5pt; line-height: 1.6; }
-      .event-body p+p { margin-top: 2mm; }
-      .event-body .panel-date { font-size: 10pt; margin-bottom: 2mm; }
-      .event-body .motto { font-size: 24pt; }
+
+      .brand {
+        font-size: 1.15rem;
+      }
+
+      .menu-panel {
+        padding: 92px max(8vw, calc((100vw - 1080px) / 2)) 54px;
+      }
+
+      .menu-panel a {
+        font-size: clamp(2rem, 4vw, 3.8rem);
+      }
+
+      .menu-panel a:first-child {
+        margin-top: auto;
+      }
+
+      .menu-panel a:last-child {
+        margin-bottom: auto;
+      }
+
+      .hero {
+        height: 25svh;
+        min-height: 180px;
+        padding: 78px 0 20px;
+      }
+
+      .scroll-indicator {
+        gap: 10px;
+        margin-left: clamp(30%, 34vw, 38%);
+      }
+
+      .scroll-label {
+        font-size: .82rem;
+      }
+
+      .scroll-line {
+        height: clamp(26px, 3.5svh, 38px);
+      }
+
+      .period {
+        scroll-margin-top: 72px;
+      }
+
+      .event {
+        min-height: max(82svh, 620px);
+      }
+
+      .event-inner {
+        padding: 110px clamp(40px, 6vw, 96px) 38px;
+      }
+
+      .event-body {
+        --body-size: clamp(.92rem, 1.05vw, 1.05rem);
+      }
+
+      .js .event-body {
+        transform: translateY(18px);
+        transition: opacity .45s ease, transform .6s cubic-bezier(.16, 1, .3, 1);
+      }
+
+      .js .event.is-current .event-body {
+        opacity: 1;
+        transform: none;
+      }
+
+      .event.is-current::after {
+        background: rgba(0, 0, 0, .4);
+      }
+
+      .js .event-body>p:not(.panel-date) {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity .4s ease, transform .45s ease;
+      }
+
+      .js .event-body>p:nth-child(3) {
+        transition-delay: .08s;
+      }
+
+      .js .event-body>p:nth-child(n+4) {
+        transition-delay: .16s;
+      }
+
+      .js .event.is-current .event-body>p {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .js .event .event-body,
+      .js .event .event-body>p {
+        opacity: 1;
+        transform: none;
+      }
+
+      .art-svg--external {
+        display: none;
+      }
+
+      .art-svg--fallback {
+        display: block;
+        opacity: .65;
+      }
+
+      .event::after {
+        display: none;
+      }
+
+      .event-toggle {
+        display: none;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 13mm;
+    }
+
+    @media print {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body,
+      body.menu-open {
+        position: static !important;
+        top: auto !important;
+        overflow: visible !important;
+        color: #111;
+        background: #fff;
+        font-size: 10pt;
+      }
+
+      .site-header,
+      .menu-panel,
+      .hero,
+      .event-toggle,
+      .event::after {
+        display: none !important;
+      }
+
+      .period {
+        margin: 0;
+      }
+
+      .event {
+        min-height: 0;
+        grid-template-columns: 28mm minmax(0, 1fr);
+        align-items: center;
+        gap: 6mm;
+        padding: 5mm 0;
+        color: #111;
+        background: #fff !important;
+        border-bottom: 1px solid #bbb;
+        break-inside: avoid;
+        overflow: visible;
+      }
+
+      .event-art {
+        position: static;
+        overflow: visible;
+      }
+
+      .art-svg--external {
+        display: none;
+      }
+
+      .art-svg--fallback {
+        display: block;
+        width: 28mm;
+        height: 28mm;
+        max-height: none;
+        color: #333;
+        opacity: 1;
+      }
+
+      .event-inner {
+        display: block;
+        padding: 0;
+      }
+
+      .event-body {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        color: #111;
+        text-align: left;
+        text-shadow: none;
+      }
+
+      .js .event .event-body,
+      .js .event .event-body>p {
+        opacity: 1;
+        transform: none;
+      }
+
+      .event-body p {
+        font-size: 10.5pt;
+        line-height: 1.6;
+      }
+
+      .event-body p+p {
+        margin-top: 2mm;
+      }
+
+      .event-body .panel-date {
+        font-size: 10pt;
+        margin-bottom: 2mm;
+      }
+
+      .event-body .motto {
+        font-size: 24pt;
+      }
     }
   </style>
 </head>
@@ -255,8 +726,7 @@
 
       <div class="timeline">
         <section class="period" id="y2017" tabindex="-1" aria-label="2017">
-          <article class="event event--tone-a"
-            tabindex="-1" aria-label="2017 事件">
+          <article class="event event--tone-a" tabindex="-1" aria-label="2017 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2017_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -274,13 +744,13 @@
                 <p>在台灣參加陽光劇團 M 老師的工作坊</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-1" aria-label="顯示2017 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-1"
+              aria-label="顯示2017 事件文字"></button>
           </article>
         </section>
 
         <section class="period" id="y2018" tabindex="-1" aria-label="2018 至 2020">
-          <article class="event event--tone-b"
-            tabindex="-1" aria-label="2018—2020 事件">
+          <article class="event event--tone-b" tabindex="-1" aria-label="2018—2020 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2018-2020_flight.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -298,10 +768,10 @@
                 <p>期間曾回台灣，也曾前往法國</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-2" aria-label="顯示2018—2020 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-2"
+              aria-label="顯示2018—2020 事件文字"></button>
           </article>
-          <article class="event event--tone-a"
-            tabindex="-1" aria-label="2019/01 事件">
+          <article class="event event--tone-a" tabindex="-1" aria-label="2019/01 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2019_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -321,10 +791,10 @@
                 <p>停留法國5天、抵達當天受到陽光劇團邀請，隔天開始在陽光劇團實習、廚房打工</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-3" aria-label="顯示2019/01 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-3"
+              aria-label="顯示2019/01 事件文字"></button>
           </article>
-          <article class="event event--tone-b"
-            tabindex="-1" aria-label="2019 Summer 事件">
+          <article class="event event--tone-b" tabindex="-1" aria-label="2019 Summer 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2019_summer.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -339,13 +809,13 @@
               <div class="event-body" id="event-copy-4">
                 <p class="panel-date">2019 / Summer</p>
                 <p>在台灣參加陽光劇團M老師的工作坊</p>
-                <p>被老師邀請「要不要來陽光劇團實習」</p>
+                <p>被老師邀請「到陽光劇團實習」</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-4" aria-label="顯示2019 Summer 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-4"
+              aria-label="顯示2019 Summer 事件文字"></button>
           </article>
-          <article class="event event--tone-a"
-            tabindex="-1" aria-label="2019/12 事件">
+          <article class="event event--tone-a" tabindex="-1" aria-label="2019/12 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2019_12_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -353,8 +823,7 @@
                 <path class="al" d="M38 42h104M52 30h12m11 0h12" />
                 <circle class="al" cx="90" cy="91" r="39" />
                 <g>
-                  <path class="al"
-                    d="M62 91c8-18 22-26 36-20 12 5 19 19 18 34-10 9-24 15-39 9-10-4-16-13-15-23Z" />
+                  <path class="al" d="M62 91c8-18 22-26 36-20 12 5 19 19 18 34-10 9-24 15-39 9-10-4-16-13-15-23Z" />
                   <circle cx="73" cy="82" r="3" fill="currentColor" />
                   <circle cx="105" cy="98" r="3" fill="currentColor" />
                 </g>
@@ -367,10 +836,10 @@
                 <p>跨年結束，在法國巴黎的一間洗衣店度過</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-5" aria-label="顯示2019/12 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-5"
+              aria-label="顯示2019/12 事件文字"></button>
           </article>
-          <article class="event event--tone-b"
-            tabindex="-1" aria-label="2020/02 事件">
+          <article class="event event--tone-b" tabindex="-1" aria-label="2020/02 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2020_02_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -381,8 +850,7 @@
                 <g>
                   <path class="al" d="M149 39v82c-18-8-31-23-39-45V39M149 58c-14 7-27 8-39 2" />
                 </g>
-                <path class="al"
-                  d="M55 137c8-19 19-29 35-29s27 10 35 29M65 137c6-11 14-17 25-17s19 6 25 17" />
+                <path class="al" d="M55 137c8-19 19-29 35-29s27 10 35 29M65 137c6-11 14-17 25-17s19 6 25 17" />
                 <ellipse class="af" style="--fill-opacity:.11" cx="90" cy="137" rx="35" ry="8" />
                 <circle cx="90" cy="116" r="3.5" fill="currentColor" />
               </svg>
@@ -393,13 +861,13 @@
                 <p>第一次踏上陽光劇團的舞台，參與金夢島的實驗週</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-6" aria-label="顯示2020/02 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-6"
+              aria-label="顯示2020/02 事件文字"></button>
           </article>
         </section>
 
         <section class="period" id="y2020" tabindex="-1" aria-label="2020 至 2023">
-          <article class="event event--tone-a"
-            tabindex="-1" aria-label="2020/03—2023/11 事件">
+          <article class="event event--tone-a" tabindex="-1" aria-label="2020/03—2023/11 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2020_return_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -417,10 +885,10 @@
                 <p>疫情爆發，回到台灣</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-7" aria-label="顯示2020/03—2023/11 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-7"
+              aria-label="顯示2020/03—2023/11 事件文字"></button>
           </article>
-          <article class="event event--tone-b"
-            tabindex="-1" aria-label="2023/11 事件">
+          <article class="event event--tone-b" tabindex="-1" aria-label="2023/11 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2023_11_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -436,13 +904,13 @@
                 <p>前往京都觀看陽光劇團的《金夢島》</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-8" aria-label="顯示2023/11 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-8"
+              aria-label="顯示2023/11 事件文字"></button>
           </article>
         </section>
 
         <section class="period" id="y2024" tabindex="-1" aria-label="2024 至 2025">
-          <article class="event event--tone-a"
-            tabindex="-1" aria-label="2024/09—2025/05 事件">
+          <article class="event event--tone-a" tabindex="-1" aria-label="2024/09—2025/05 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2024_2025_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
@@ -463,18 +931,17 @@
                 <p>在陽光劇團旁邊上表演課、小丑課及其他不同類型的課程</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-9" aria-label="顯示2024/09—2025/05 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-9"
+              aria-label="顯示2024/09—2025/05 事件文字"></button>
           </article>
-          <article class="event event--tone-b"
-            tabindex="-1" aria-label="2025/06 事件">
+          <article class="event event--tone-b" tabindex="-1" aria-label="2025/06 事件">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="2025_06_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
                 <g>
                   <path class="al" d="M30 31c21-9 42-9 63 0v49c0 24-13 43-31 51-19-8-32-27-32-51Z" />
                   <path class="al" d="M87 39c21-9 42-9 63 0v49c0 24-13 43-31 51-13-6-24-17-29-32" />
-                  <path class="al"
-                    d="M43 65c7-5 14-5 21 0m10 0c7-5 14-5 21 0M48 102c10 10 21 10 31 0" />
+                  <path class="al" d="M43 65c7-5 14-5 21 0m10 0c7-5 14-5 21 0M48 102c10 10 21 10 31 0" />
                   <path class="al" d="M103 70c7 5 14 5 21 0m9 0c5 3 9 4 14 2m-42 35c10-9 21-9 31 0" />
                   <circle cx="62" cy="84" r="3" fill="currentColor" />
                 </g>
@@ -486,18 +953,16 @@
                 <p>導演的面具課</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-10" aria-label="顯示2025/06 事件文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-10"
+              aria-label="顯示2025/06 事件文字"></button>
           </article>
-          <article
-            class="event event--motto event--tone-a"
-            tabindex="-1" aria-label="小丑課名言">
+          <article class="event event--motto event--tone-a" tabindex="-1" aria-label="小丑課名言">
             <div class="event-art" aria-hidden="true">
               <img class="art-svg art-svg--external" src="final_animation.svg" alt="">
               <svg class="art-svg art-svg--fallback" viewBox="0 0 180 160">
                 <g>
                   <path class="al" d="m90 18 19 42 46 5-34 31 10 45-41-23-41 23 10-45-34-31 46-5Z" />
-                  <path class="al" d="m90 39 12 28 31 3-23 20 7 30-27-16-27 16 7-30-23-20 31-3Z"
-                    opacity=".35" />
+                  <path class="al" d="m90 39 12 28 31 3-23 20 7 30-27-16-27 16 7-30-23-20 31-3Z" opacity=".35" />
                   <circle cx="90" cy="84" r="4" fill="currentColor" />
                 </g>
               </svg>
@@ -507,7 +972,8 @@
                 <p class="motto" lang="en">Shitty but proud.</p>
               </div>
             </div>
-            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-11" aria-label="顯示小丑課名言文字"></button>
+            <button class="event-toggle" type="button" hidden aria-expanded="false" aria-controls="event-copy-11"
+              aria-label="顯示小丑課名言文字"></button>
           </article>
         </section>
       </div>

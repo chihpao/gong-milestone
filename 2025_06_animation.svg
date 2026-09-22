@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Studio Deep Moss Twilight -->
+    <radialGradient id="mask-forest-room" cx="0.5" cy="0.5" r="0.65">
+      <stop offset="0%" stop-color="#2d4d42" stop-opacity="0.32"/>
+      <stop offset="55%" stop-color="#142621" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#08100d" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Large Larval Mask (Expressive, organic smooth curve) -->
+    <g id="swooping-larval-mask">
+      <!-- Sculpted mask shell -->
+      <path d="M0 -110 C85 -110 145 -50 140 45 C135 125 80 190 0 200 C-80 190 -135 125 -140 45 C-145 -50 -85 -110 0 -110 Z" 
+            fill="#ede0cc" stroke="#1c2c26" stroke-width="3.5"/>
+      <!-- Cheek contour -->
+      <path d="M-70 25 C-50 60 -25 80 0 85 C25 80 50 60 70 25" stroke="#ba9e7f" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Nose bridge -->
+      <path d="M0 -25 L-8 40 L0 50 L8 40 Z" fill="#cfb191" stroke="#947455" stroke-width="2"/>
+      <!-- Eye slits with glowing mint gaze -->
+      <path d="M-75 -20 Q-45 -42 -20 -20 Q-45 0 -75 -20 Z" fill="#0d1714"/>
+      <path d="M75 -20 Q45 -42 20 -20 Q45 0 75 -20 Z" fill="#0d1714"/>
+      <ellipse cx="-45" cy="-22" rx="4.5" ry="2.5" fill="#71dfc2">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="45" cy="-22" rx="4.5" ry="2.5" fill="#71dfc2">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="0" cy="130" rx="28" ry="14" fill="#0d1714" stroke="#7a5d40" stroke-width="2.5"/>
+      <!-- Trailing leather cords -->
+      <path d="M-130 30 C-180 50 -210 110 -250 150" stroke="#4a3b2b" stroke-width="3.5" fill="none"/>
+      <path d="M130 30 C180 50 210 110 250 150" stroke="#4a3b2b" stroke-width="3.5" fill="none"/>
+    </g>
+
+    <!-- Commedia dell'arte Character Mask (Carved wood, hooked nose) -->
+    <g id="character-hook-mask">
+      <path d="M-90 -90 C50 -105 120 -55 130 25 C140 95 90 170 -10 185 C-80 175 -110 115 -110 25 Z" 
+            fill="#d6bd9c" stroke="#1c2c26" stroke-width="3.5"/>
+      <path d="M-60 -40 Q15 -70 80 -35" stroke="#6e4d30" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <path d="M0 -22 Q50 -40 70 -10 Q30 0 0 -22 Z" fill="#0d1714"/>
+      <circle cx="36" cy="-20" r="3.5" fill="#71dfc2"/>
+      <path d="M20 -12 C70 12 88 52 48 64 C20 58 8 40 20 -12 Z" fill="#a88562" stroke="#6e4d30" stroke-width="2.5"/>
+      <path d="M-35 125 Q30 155 75 110" stroke="#0d1714" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- Deep Green-Black Rehearsal Studio Base -->
+  <rect width="1440" height="800" fill="#09120f"/>
+  <rect width="1440" height="800" fill="url(#mask-forest-room)"/>
+
+  <!-- Top Studio Support Battens Panning in Parallax (8s cycle) -->
+  <g opacity="0.6">
+    <animateTransform attributeName="transform" type="translate" values="100 0; -150 0; 100 0" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+    <rect x="-100" y="30" width="1640" height="20" fill="#14241e" stroke="#253d34" stroke-width="2"/>
+    <line x1="-100" y1="50" x2="1540" y2="50" stroke="#080f0c" stroke-width="4"/>
+  </g>
+
+  <!-- BACKGROUND: ACTOR DONNING MASK & GESTURING (Midground presence: 8s traversal) -->
+  <g id="actor-with-mask" transform="translate(720, 480)">
+    <!-- Actor body turning in space -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="-8 0 0; 10 0 0; -8 0 0"
+        dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+
+      <!-- Shadow on floor -->
+      <ellipse cx="0" cy="90" rx="75" ry="20" fill="#060b09" opacity="0.8"/>
+
+      <!-- Torso -->
+      <path d="M-18 15 C-25 -35 -20 -95 0 -150 C20 -95 25 -35 18 15 Z" fill="#0d1a16" stroke="#4d786a" stroke-width="2"/>
+      <circle cx="0" cy="-175" r="22" fill="#0d1a16" stroke="#4d786a" stroke-width="2"/>
+
+      <!-- Arms holding mask up to face -->
+      <path d="M-15 -100 L-45 -140 L-15 -165" stroke="#cfb191" stroke-width="3" stroke-linecap="round" fill="none">
+        <animate attributeName="d"
+          values="M-15 -100 L-45 -140 L-15 -165; M-15 -100 L-65 -120 L-25 -140; M-15 -100 L-45 -140 L-15 -165"
+          dur="4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M15 -100 L45 -140 L15 -165" stroke="#cfb191" stroke-width="3" stroke-linecap="round" fill="none">
+        <animate attributeName="d"
+          values="M15 -100 L45 -140 L15 -165; M15 -100 L65 -120 L25 -140; M15 -100 L45 -140 L15 -165"
+          dur="4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+
+  <!-- MASK 1: LARVAL MASK SWOOPING ACROSS THE ENTIRE CANVAS (Top-Right to Bottom-Left: 6.5s traversal) -->
+  <g id="flying-larval-mask">
+    <!-- Translates diagonally across entire screen -->
+    <animateTransform attributeName="transform" type="translate"
+      values="1680 140; -360 620"
+      dur="6.5s" repeatCount="indefinite" calcMode="linear"/>
+
+    <!-- Mask floating rotation & tilt in air (3s) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="-15 0 0; 20 0 0; -15 0 0"
+        dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <use href="#swooping-larval-mask" transform="scale(1.15)"/>
+    </g>
+  </g>
+
+  <!-- MASK 2: COMMEDIA PROFILE MASK SOARING ACROSS (Left to Right: 5.5s traversal) -->
+  <g id="flying-commedia-mask">
+    <animateTransform attributeName="transform" type="translate"
+      values="-340 380; 1680 260"
+      dur="5.5s" repeatCount="indefinite" calcMode="linear"/>
+
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="18 0 0; -12 0 0; 18 0 0"
+        dur="2.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <use href="#character-hook-mask" transform="scale(0.85)"/>
+    </g>
+  </g>
+
+  <!-- Wood Shavings & Workshop Micro-Dust Streaming Past Lens (3s cycle) -->
+  <g opacity="0.8">
+    <circle cx="600" cy="380" r="3" fill="#71dfc2">
+      <animateTransform attributeName="transform" type="translate" values="300 -120; -600 240" dur="2.8s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+    <circle cx="950" cy="450" r="3.5" fill="#ebdcc7">
+      <animateTransform attributeName="transform" type="translate" values="300 -150; -700 350" dur="2.4s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+    <circle cx="450" cy="280" r="2.5" fill="#d6be9a">
+      <animateTransform attributeName="transform" type="translate" values="300 -80; -500 160" dur="3.2s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+  </g>
+</svg>

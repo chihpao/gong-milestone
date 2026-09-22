@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Sharp blinding spotlight gradient -->
+    <linearGradient id="sharp-spot-left" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#fffbe0" stop-opacity="0.45"/>
+      <stop offset="45%" stop-color="#fae298" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#fae298" stop-opacity="0.01"/>
+    </linearGradient>
+
+    <linearGradient id="sharp-spot-right" x1="1" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#fdf2cc" stop-opacity="0.45"/>
+      <stop offset="45%" stop-color="#f5d67a" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f5d67a" stop-opacity="0.01"/>
+    </linearGradient>
+
+    <linearGradient id="center-stage-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#140a17"/>
+      <stop offset="45%" stop-color="#26122b"/>
+      <stop offset="100%" stop-color="#100812"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Velvet Theatrical Darkness -->
+  <rect width="1440" height="800" fill="#0c060e"/>
+
+  <!-- Stage Floor Perspective Planks (Dolly-in Zoom: 6s cycle) -->
+  <g id="stage-boards">
+    <polygon points="0,480 1440,480 1440,800 0,800" fill="url(#center-stage-floor)"/>
+    <!-- Stage perspective lines radiating towards audience -->
+    <path d="M-100 800 L540 480 M160 800 L640 480 M420 800 L710 480 M720 800 L760 480 M1020 800 L810 480 M1280 800 L880 480 M1540 800 L980 480" 
+          stroke="#421f47" stroke-width="2.5" opacity="0.65"/>
+    <line x1="0" y1="540" x2="1440" y2="540" stroke="#2c1430" stroke-width="2"/>
+    <line x1="0" y1="620" x2="1440" y2="620" stroke="#220e26" stroke-width="2.5"/>
+    <line x1="0" y1="710" x2="1440" y2="710" stroke="#1a091d" stroke-width="3"/>
+  </g>
+
+  <!-- SWEEPING SEARCHLIGHT BEAMS CROSSING ENTIRE SCREEN (Wide dynamic 5s sweep) -->
+  <!-- Left Spotlight: sweeps from left corner all the way across right to 1300 -->
+  <g id="left-spotlight">
+    <polygon points="80,-40 220,-40 1280,840 980,840" fill="url(#sharp-spot-left)">
+      <animate attributeName="points"
+        values="
+          80,-40 220,-40 780,840 520,840;
+          120,-40 280,-40 1380,840 1080,840;
+          60,-40 200,-40 420,840 180,840;
+          80,-40 220,-40 780,840 520,840
+        "
+        dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+    </polygon>
+  </g>
+
+  <!-- Right Spotlight: sweeps across from right corner all the way left to 100 -->
+  <g id="right-spotlight">
+    <polygon points="1360,-40 1220,-40 220,840 480,840" fill="url(#sharp-spot-right)">
+      <animate attributeName="points"
+        values="
+          1360,-40 1220,-40 680,840 940,840;
+          1320,-40 1180,-40 140,840 400,840;
+          1380,-40 1260,-40 1080,840 1340,840;
+          1360,-40 1220,-40 680,840 940,840
+        "
+        dur="4.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+    </polygon>
+  </g>
+
+  <!-- Central Blazing Spotlight Intersection Pool (Pulsing in rhythm with the sweeps) -->
+  <ellipse cx="720" cy="650" rx="240" ry="75" fill="#fff9db" opacity="0.28">
+    <animate attributeName="rx" values="210;270;210" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.42;0.2" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="720" cy="650" rx="140" ry="42" fill="#ffffff" opacity="0.45">
+    <animate attributeName="opacity" values="0.35;0.65;0.35" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- ACTOR STRIDING FROM WINGS INTO THE BLAZING SPOTLIGHT (Full-screen Left-to-Center-to-Right Traversal: 8s cycle) -->
+  <g id="stage-debut-actor">
+    <!-- Whole actor strides from -240 (dark left wing) to 720 (spotlight center), holds in glory, then exits to right 1680 -->
+    <animateTransform attributeName="transform" type="translate"
+      values="-260 560; 720 560; 720 560; 1700 560"
+      keyTimes="0; 0.42; 0.65; 1"
+      dur="8s" repeatCount="indefinite" calcMode="spline"
+      keySplines="0.2 0.8 0.4 1; 0 0 1 1; 0.6 0 0.2 1"/>
+
+    <!-- Actor Stride & Triumph Gesture -->
+    <g>
+      <!-- Shadow on stage boards -->
+      <ellipse cx="0" cy="25" rx="70" ry="18" fill="#080309" opacity="0.85"/>
+
+      <!-- Actor Body Silhouette -->
+      <path d="M-18 15 C-25 -40 -18 -115 5 -180 C28 -115 25 -40 18 15 Z" fill="#0d0610" stroke="#fce79d" stroke-width="2.5"/>
+      <circle cx="8" cy="-210" r="24" fill="#0d0610" stroke="#fce79d" stroke-width="2.5"/>
+
+      <!-- Actor Arms Opening to Audience & Lights (Dramatic theatrical embrace) -->
+      <path d="M-8 -135 L-65 -170 L-105 -150" stroke="#fce79d" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <path d="M12 -135 L65 -165 L115 -140" stroke="#fce79d" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+      <!-- Striding Legs -->
+      <line x1="-12" y1="15" x2="-25" y2="75" stroke="#0d0610" stroke-width="8" stroke-linecap="round"/>
+      <line x1="12" y1="15" x2="35" y2="72" stroke="#0d0610" stroke-width="8" stroke-linecap="round"/>
+
+      <!-- Golden theatrical halo spark above the actor's head -->
+      <ellipse cx="8" cy="-245" rx="26" ry="8" fill="none" stroke="#6ee6cb" stroke-width="2" opacity="0.85">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+  </g>
+
+  <!-- VIOLENTLY PARTING STAGE CURTAINS (Whipping open left and right in dramatic reveal: 5s cycle) -->
+  <!-- Left Curtain -->
+  <g id="left-parting-curtain">
+    <path d="M-40 -20 C120 160 80 400 160 620 C200 720 130 800 180 840 L-40 840 Z" fill="#1c0a1f" stroke="#331238" stroke-width="3">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -120 0; 0 0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+    </path>
+    <!-- Velvet fold line -->
+    <path d="M60 0 C90 220 70 460 120 740" stroke="#4a1852" stroke-width="4" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Right Curtain -->
+  <g id="right-parting-curtain">
+    <path d="M1480 -20 C1320 160 1360 400 1280 620 C1240 720 1310 800 1260 840 L1480 840 Z" fill="#1c0a1f" stroke="#331238" stroke-width="3">
+      <animateTransform attributeName="transform" type="translate" values="0 0; 120 0; 0 0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+    </path>
+    <path d="M1380 0 C1350 220 1370 460 1320 740" stroke="#4a1852" stroke-width="4" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Cascading Stage Dust & Confetti Whipping Across Frame (3s cycle) -->
+  <g opacity="0.85">
+    <circle cx="680" cy="520" r="3" fill="#ffffff">
+      <animateTransform attributeName="transform" type="translate" values="-300 -100; 300 100" dur="2.8s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+    <circle cx="740" cy="580" r="3.5" fill="#fce79d">
+      <animateTransform attributeName="transform" type="translate" values="-350 80; 350 -80" dur="3.2s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+    <circle cx="710" cy="460" r="2.5" fill="#6ee6cb">
+      <animateTransform attributeName="transform" type="translate" values="250 -120; -250 120" dur="2.5s" repeatCount="indefinite" calcMode="linear"/>
+    </circle>
+  </g>
+</svg>

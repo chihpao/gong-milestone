@@ -1,0 +1,10 @@
+# Obsolete SVGs
+2018-2020_animation.svg
+stage_wish_animation.svg
+
+# User private assets
+Gong_里程碑照片/
+
+# System and OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Warm hearth radial ambience (Bronze / Warm Gold / Dark Charcoal) -->
+    <radialGradient id="kitchen-hearth" cx="0.45" cy="0.5" r="0.65">
+      <stop offset="0%" stop-color="#c49a45" stop-opacity="0.28"/>
+      <stop offset="50%" stop-color="#7a5522" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#110e0c" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Flowing Steam Ribbon Gradient streaming backwards to the left -->
+    <linearGradient id="rush-steam-left" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#fdf8ed" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#e2d4b5" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#c9b895" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Hanging copper / brass cookware pair -->
+    <g id="hanging-utensils">
+      <line x1="0" y1="0" x2="0" y2="120" stroke="#3d2f25" stroke-width="3"/>
+      <circle cx="0" cy="140" r="28" fill="#291f18" stroke="#b38842" stroke-width="2.5"/>
+      <!-- Ladle next to it -->
+      <line x1="60" y1="0" x2="60" y2="150" stroke="#3d2f25" stroke-width="3"/>
+      <path d="M45 150 C45 175 75 175 75 150 Z" fill="#241a13" stroke="#c49a45" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <!-- Deep Warm Kitchen Base -->
+  <rect width="1440" height="800" fill="#110e0c"/>
+  <rect width="1440" height="800" fill="url(#kitchen-hearth)"/>
+
+  <!-- Background Kitchen Racks Panning Slightly (Parallax: 7s cycle) -->
+  <g id="back-racks" opacity="0.42">
+    <animateTransform attributeName="transform" type="translate" values="-80 0; 120 0; -80 0" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+    <!-- Shelf with stacked plates & bowls -->
+    <rect x="-100" y="160" width="1640" height="12" fill="#2d241c"/>
+    <!-- Stack of soup bowls -->
+    <rect x="250" y="120" width="70" height="38" rx="4" fill="#47372a" stroke="#6b533e" stroke-width="1.8"/>
+    <rect x="580" y="115" width="80" height="43" rx="4" fill="#3e3025" stroke="#6b533e" stroke-width="1.8"/>
+    <rect x="980" y="110" width="75" height="48" rx="4" fill="#47372a" stroke="#6b533e" stroke-width="1.8"/>
+    <rect x="1240" y="125" width="65" height="33" rx="4" fill="#3e3025" stroke="#6b533e" stroke-width="1.8"/>
+  </g>
+
+  <!-- Countertop Table Surface in Warm Bronze Wood -->
+  <g id="kitchen-counter">
+    <polygon points="0,520 1440,520 1440,800 0,800" fill="#18130f"/>
+    <line x1="0" y1="520" x2="1440" y2="520" stroke="#4a3b2c" stroke-width="3"/>
+    <line x1="0" y1="530" x2="1440" y2="530" stroke="#2b2017" stroke-width="2"/>
+  </g>
+
+  <!-- RUSHING KITCHEN APPRENTICE RUNNING FORWARD LEFT-TO-RIGHT CARRYING STEAMING POT -->
+  <g id="rushing-cook">
+    <!-- Traverses forward across the screen: from left (-380) to right (1720) in 5.5s -->
+    <animateTransform attributeName="transform" type="translate"
+      values="-380 470; 1720 470"
+      dur="5.5s" repeatCount="indefinite" calcMode="linear"/>
+
+    <!-- Running bob up & down (0.7s half-stride cycle) -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        values="0 0; 0 -15; 0 0; 0 -15; 0 0"
+        dur="1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+
+      <!-- Floor Contact Shadow moving with cook -->
+      <ellipse cx="20" cy="80" rx="96" ry="24" fill="#090705" opacity="0.8"/>
+
+      <!-- Cook Body / Torso leaning forward to the right into the run -->
+      <path d="M-22 20 C-12 -45 8 -115 35 -175 C52 -115 36 -45 5 20 Z" fill="#0d0a08" stroke="#d4b26f" stroke-width="2.2"/>
+      
+      <!-- Head leaning forward to the right -->
+      <circle cx="46" cy="-205" r="22" fill="#0d0a08" stroke="#d4b26f" stroke-width="2"/>
+
+      <!-- Chef's Toque Blanche (tilted forward with rushing momentum) -->
+      <path d="M26 -218 C20 -244 34 -264 54 -264 C74 -264 82 -244 74 -218 Z" fill="#f5ede0" stroke="#c49a45" stroke-width="1.8"/>
+
+      <!-- Apron ties streaming backward behind back to the left (wind resistance) -->
+      <path d="M-18 -36 C-55 -32 -90 -22 -125 -26" stroke="#f4ede1" stroke-width="2.5" fill="none"/>
+      <path d="M-18 -26 C-50 -18 -80 -8 -110 -13" stroke="#f4ede1" stroke-width="2" fill="none"/>
+
+      <!-- Striding Running Legs pumping energetically forward -->
+      <!-- Back leg pushing off toward left -->
+      <line x1="-5" y1="20" x2="-45" y2="75" stroke="#0d0a08" stroke-width="7.5" stroke-linecap="round">
+        <animate attributeName="x2" values="-45; 65; -45" dur="0.65s" repeatCount="indefinite"/>
+      </line>
+      <!-- Front leg driving forward toward right -->
+      <line x1="15" y1="20" x2="65" y2="75" stroke="#0d0a08" stroke-width="7.5" stroke-linecap="round">
+        <animate attributeName="x2" values="65; -45; 65" dur="0.65s" repeatCount="indefinite"/>
+      </line>
+
+      <!-- Large Steaming Stockpot held firmly in front (at the right) -->
+      <g transform="translate(68, -22)">
+        <!-- Back pot handle -->
+        <path d="M-52 16 C-65 16 -65 34 -50 34" stroke="#b38842" stroke-width="3" fill="none"/>
+
+        <!-- Pot Body -->
+        <path d="M-55 0 C-55 -8 -40 -14 0 -14 C40 -14 55 -8 55 0 L48 72 C46 86 34 94 0 94 C-34 94 -46 86 -48 72 Z" 
+              fill="#221912" stroke="#b38842" stroke-width="3"/>
+        <!-- Pot Rim -->
+        <ellipse cx="0" cy="0" rx="55" ry="11" fill="#38291d" stroke="#c49a45" stroke-width="2"/>
+        <!-- Golden Hot Broth Surface -->
+        <ellipse cx="0" cy="0" rx="47" ry="8" fill="#ffd175"/>
+
+        <!-- Front pot handle -->
+        <path d="M52 16 C65 16 65 34 50 34" stroke="#b38842" stroke-width="3" fill="none"/>
+
+        <!-- Arms wrapped around and holding pot handles -->
+        <path d="M-45 -55 C-30 -30 -15 -10 -48 24" stroke="#0d0a08" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <path d="M-30 -50 C0 -25 25 0 50 24" stroke="#0d0a08" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+        <!-- Massive Billowing Steam Ribbon trailing back towards the LEFT (high speed resistance) -->
+        <path d="M-10 -12 C-60 -55 -120 -35 -190 -95 C-260 -155 -340 -130 -460 -185 C-580 -240 -680 -210 -820 -280" 
+              stroke="url(#rush-steam-left)" stroke-width="46" stroke-linecap="round" fill="none">
+          <animate attributeName="d"
+            values="
+              M-10 -12 C-60 -55 -120 -35 -190 -95 C-260 -155 -340 -130 -460 -185 C-580 -240 -680 -210 -820 -280;
+              M-10 -12 C-80 -40 -110 -70 -210 -80 C-280 -140 -330 -175 -480 -170 C-600 -220 -670 -250 -820 -280;
+              M-10 -12 C-60 -55 -120 -35 -190 -95 C-260 -155 -340 -130 -460 -185 C-580 -240 -680 -210 -820 -280
+            "
+            dur="1.9s" repeatCount="indefinite"/>
+        </path>
+        <path d="M15 -8 C-35 -60 -95 -45 -160 -105 C-230 -165 -310 -145 -410 -210 C-510 -270 -620 -245 -740 -315" 
+              stroke="url(#rush-steam-left)" stroke-width="32" stroke-linecap="round" fill="none" opacity="0.65">
+          <animate attributeName="d"
+            values="
+              M15 -8 C-35 -60 -95 -45 -160 -105 C-230 -165 -310 -145 -410 -210 C-510 -270 -620 -245 -740 -315;
+              M15 -8 C-50 -45 -85 -80 -180 -90 C-250 -150 -300 -195 -430 -195 C-530 -255 -600 -285 -740 -315;
+              M15 -8 C-35 -60 -95 -45 -160 -105 C-230 -165 -310 -145 -410 -210 C-510 -270 -620 -245 -740 -315
+            "
+            dur="1.6s" repeatCount="indefinite"/>
+        </path>
+      </g>
+    </g>
+  </g>
+
+  <!-- Foreground: Hanging Copper Utensils Swinging in Parallax (Upper stage) -->
+  <g id="foreground-rack" transform="translate(0, -20)">
+    <!-- Swaying left utensil pair (3s pendulum) -->
+    <g transform="translate(240, 0)">
+      <animateTransform attributeName="transform" type="rotate" values="-5 240 0; 7 240 0; -5 240 0" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <use href="#hanging-utensils"/>
+    </g>
+    <!-- Swaying center-right utensil pair (3.4s) -->
+    <g transform="translate(1180, 0)">
+      <animateTransform attributeName="transform" type="rotate" values="6 1180 0; -6 1180 0; 6 1180 0" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+      <use href="#hanging-utensils"/>
+    </g>
+  </g>
+
+  <!-- Flying Golden Fire Sparks drifting in the runner's wake -->
+  <g opacity="0.85">
+    <circle cx="200" cy="460" r="2.5" fill="#ffd175">
+      <animateTransform attributeName="transform" type="translate" values="-200 0; 1400 -120" dur="3.2s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="80" cy="420" r="3" fill="#ffeaa8">
+      <animateTransform attributeName="transform" type="translate" values="-200 0; 1500 -180" dur="2.8s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="500" r="2" fill="#fff5d0">
+      <animateTransform attributeName="transform" type="translate" values="-200 0; 1350 -100" dur="3.6s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity" values="0;1;0" dur="3.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

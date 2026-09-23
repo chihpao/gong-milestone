@@ -2,13 +2,13 @@
 
 本文件記錄會影響內容、視覺、互動或交付方式的重要變更。
 
-## 2026-09-24 — v49 專案目錄與動畫資產命名重構（本地）
+## 2026-09-24 — v49 專案目錄與動畫資產命名重構（已發布）
 
 - 將 11 份正式 SVG 以一致的日期／事件語意重新命名並移至 `assets/animations/`；favicon 移至 `assets/icons/`，里程碑資料移至 `data/milestones.json`。
 - 同步 `index.html` 的 JSON、favicon、11 個靜態動畫備援路徑及嚴格資產路徑白名單；JSON 的 11 個 asset 路徑亦同步更新。
 - 將已淘汰 SVG 移至本機 `archive/legacy-animations/`、私人照片移至本機 `private/photos/`，並以目錄級 `.gitignore` 規則防止發布。
 - 以 `docs/MAINTENANCE.md` 取代過時且僅存本機的 README.local.md，並同步所有受影響的現行文件；CHANGELOG 既有舊檔名保留為歷史紀錄。
-- 本次保留 v48 尚未提交的完整動畫創作資料，尚未推送 GitHub。
+- 本次保留並一併發布 v48 的完整動畫創作資料。依使用者明確要求推送提交 `241aa7e` 至既有 GitHub `main`；Pages build／deploy 成功，14 個新公開資源均回應 200，三個舊入口路徑均回應 404。
 
 ## 2026-09-24 — v48 動畫創作資料完整化（本地）
 

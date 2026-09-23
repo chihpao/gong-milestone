@@ -48,7 +48,7 @@
 
 ## 發布
 
-- v49 目錄重構與 v48 動畫創作資料目前只在本機完成，尚未推送；GitHub Pages 仍是 v47 已發布版本。發布時必須讓檔案搬移與所有引用修正位於同一個提交，並在部署後重新檢查 14 個公開資源。
+- v49 目錄重構與 v48 動畫創作資料已由提交 `241aa7e` 推送至既有 GitHub `main`。GitHub Pages build／deploy 均成功；公開首頁、`data/milestones.json`、favicon 與 11 份新路徑動畫共 14 個資源全部回應 200，JSON 含 11 筆資料。舊 `/milestones.json`、`/2017_animation.svg` 與 `/access.html` 均回應 404。
 
 - v47 依使用者明確要求直接公開，已推送至既有 GitHub `main`。GitHub Pages 已確認首頁與 `milestones.json` 回應 200、JSON 含 11 筆資料，舊 `access.html` 回應 404。
 

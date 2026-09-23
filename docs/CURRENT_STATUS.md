@@ -42,7 +42,7 @@
 
 ## 發布
 
-- v47 依使用者明確要求直接公開，已推送至既有 GitHub `main`，由 GitHub Pages 自動更新。
+- v47 依使用者明確要求直接公開，已推送至既有 GitHub `main`。GitHub Pages 已確認首頁與 `milestones.json` 回應 200、JSON 含 11 筆資料，舊 `access.html` 回應 404。
 
 - v46 依使用者明確要求推送至既有 GitHub `main`；LINE 既有連結預覽仍可能保留快取，需等待重新抓取或以新網址參數分享。
 

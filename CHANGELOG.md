@@ -2,6 +2,21 @@
 
 本文件記錄會影響內容、視覺、互動或交付方式的重要變更。
 
+## 2026-09-24 — v49 專案目錄與動畫資產命名重構（本地）
+
+- 將 11 份正式 SVG 以一致的日期／事件語意重新命名並移至 `assets/animations/`；favicon 移至 `assets/icons/`，里程碑資料移至 `data/milestones.json`。
+- 同步 `index.html` 的 JSON、favicon、11 個靜態動畫備援路徑及嚴格資產路徑白名單；JSON 的 11 個 asset 路徑亦同步更新。
+- 將已淘汰 SVG 移至本機 `archive/legacy-animations/`、私人照片移至本機 `private/photos/`，並以目錄級 `.gitignore` 規則防止發布。
+- 以 `docs/MAINTENANCE.md` 取代過時且僅存本機的 README.local.md，並同步所有受影響的現行文件；CHANGELOG 既有舊檔名保留為歷史紀錄。
+- 本次保留 v48 尚未提交的完整動畫創作資料，尚未推送 GitHub。
+
+## 2026-09-24 — v48 動畫創作資料完整化（本地）
+
+- 在 `milestones.json` 為十一幕逐一補上動畫名稱、內容關聯、完整場景腳本、構圖、時間節拍、風格、色盤、時序、方向、鏡頭、運動層與循環方式。
+- 新增全站動畫共通格式、播放方式、構圖與循環規則，使日期、內文、年份段、HTML 色調、SVG 資產和動畫設計保存在同一筆資料中。
+- 擴充 ANIMATION_STORYBOARD.md，加入內容轉譯、差異化、手機構圖、三層動態、循環藏點、降級與驗證的完整創作流程，作為未來新增里程碑時發展新動畫的依據。
+- 本次只更新結構化資料與文件，未修改網站畫面或十一份 SVG；尚未推送 GitHub。
+
 ## 2026-09-24 — v47 公開入口與 JSON 內容來源
 
 - 移除 `access.html` 與 0916 前端入口，GitHub Pages 直接開啟唯一首頁 `index.html`。

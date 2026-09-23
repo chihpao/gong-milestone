@@ -1,10 +1,10 @@
 # 龔龔里程碑：內容對照
 
-> 本文件由原始的 `20260921_龔龔里程碑文字檔.txt` 整理而成，作為方便閱讀的內容對照。網站實際載入的結構化日期與文案位於根目錄 `milestones.json`；兩者及 `index.html` 的無 JavaScript 備援必須保持一致。網站不得另加事件標題、銜接文字、口號或詮釋。
+> 本文件由原始的 `20260921_龔龔里程碑文字檔.txt` 整理而成，作為方便閱讀的內容對照。網站實際載入的結構化日期與文案位於 `data/milestones.json`；兩者及 `index.html` 的無 JavaScript 備援必須保持一致。網站不得另加事件標題、銜接文字、口號或詮釋。
 
 ## JSON 維護格式
 
-一般里程碑在 `milestones.json` 使用 `id`、`section`、`tone`、`asset`、`date` 與 `content`。新增同一時期的事件時，可複製相鄰物件、給予唯一 `id`、選擇現有年份段（`y2017`、`y2018`、`y2020` 或 `y2024`），並指定對應的本地 SVG；`content` 的每個字串會顯示為一個段落。最終名言另使用 `type: "motto"` 與 `lang: "en"`。
+一般里程碑在 `data/milestones.json` 使用 `id`、`section`、`tone`、`asset`、`date` 與 `content`。新增同一時期的事件時，可複製相鄰物件、給予唯一 `id`、選擇現有年份段（`y2017`、`y2018`、`y2020` 或 `y2024`），並指定 `assets/animations/` 下的本地 SVG；`content` 的每個字串會顯示為一個段落。最終名言另使用 `type: "motto"` 與 `lang: "en"`。每筆資料的 `animation` 物件必須完整記錄動畫名稱、內容關聯、場景腳本、構圖、時間節拍、風格、色盤、時序、方向、鏡頭、運動層與循環方式；詳細創作流程見 ANIMATION_STORYBOARD.md。
 
 ## 2017
 

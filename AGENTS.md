@@ -9,14 +9,15 @@ Build a one-page milestone website as a gift for Gong Gong. It records her perfo
 ## Required reading order
 
 1. `docs/CURRENT_STATUS.md` — current implementation, validation status, and remaining work.
-2. `milestones.json` — structured source for milestone dates and visible copy.
+2. `data/milestones.json` — structured source for milestone dates, visible copy, asset association, and detailed per-scene animation briefs.
 3. `docs/CONTENT_SOURCE.md` — human-readable copy reference, kept in sync with the JSON.
 4. `docs/DESIGN_SYSTEM.md` — current visual and interaction rules.
-5. `docs/ANIMATION_STORYBOARD.md` — canonical asset mapping, duration, direction, camera plan, loop design, and production status for all eleven animations.
+5. `docs/ANIMATION_STORYBOARD.md` — animation production rules, creative method, duration, direction, camera plan, loop design, and production status.
 6. `docs/DECISIONS.md` — reasons behind the architecture and design choices.
 7. `docs/PROJECT_BRIEF.md` — original scope and acceptance requirements.
-8. `index.html` — canonical implementation and no-JavaScript content fallback.
-9. `CHANGELOG.md` — chronological history.
+8. `docs/MAINTENANCE.md` — current directory structure and maintenance workflow.
+9. `index.html` — canonical implementation and no-JavaScript content fallback.
+10. `CHANGELOG.md` — chronological history.
 
 Do not rely on an older conversation summary when these files provide newer project state.
 
@@ -25,7 +26,7 @@ Do not rely on an older conversation summary when these files provide newer proj
 When files conflict, use this order:
 
 1. The user's newest explicit instruction.
-2. `milestones.json` for visible milestone dates and copy.
+2. `data/milestones.json` for visible milestone dates, copy, asset association, and per-scene animation metadata.
 3. This `AGENTS.md` for collaboration and engineering rules.
 4. `docs/CURRENT_STATUS.md` for the latest implementation state.
 5. `docs/ANIMATION_STORYBOARD.md` for animation asset mapping, duration, movement direction, camera, looping, and batch status.
@@ -38,22 +39,24 @@ Update conflicting documentation as part of the same change. Do not leave stale 
 
 - `index.html` is the one and only canonical website and the GitHub Pages root page. All milestone website layout and behavior edits belong here.
 - The site is public and has no password-entry page. Do not recreate `access.html` unless the user explicitly requests a new access flow.
-- HTML, CSS, and JavaScript are embedded in `index.html`; `milestones.json` stores the formatted dates and copy. The HTML retains the same copy as a readable no-JavaScript and local-file fallback.
+- HTML, CSS, and JavaScript are embedded in `index.html`; `data/milestones.json` stores the formatted dates and copy. The HTML retains the same copy as a readable no-JavaScript and local-file fallback.
 - There is no build step, package manager, application framework, backend, database, or local asset pipeline.
-- Google Fonts are the only external runtime dependency. Every milestone now has a local animated SVG full-scene background; inline SVGs remain only as reduced-motion and print fallbacks.
-- `docs/ANIMATION_STORYBOARD.md` is the production source of truth for all eleven external SVG animations. Update it whenever a scene's concept, duration, direction, camera plan, loop, asset mapping, or status changes.
+- Google Fonts are the only external runtime dependency. Every milestone has a local animated SVG full-scene background under `assets/animations/`; inline SVGs remain only as reduced-motion and print fallbacks. Interface icons live under `assets/icons/`.
+- `data/milestones.json` keeps each scene's content and detailed animation brief together; `docs/ANIMATION_STORYBOARD.md` defines the shared production and future-creation rules. Update both whenever a scene's concept, duration, direction, camera plan, loop, asset mapping, or status changes.
+- `archive/` contains obsolete local assets and `private/` contains private source material. Both directories are Git-ignored and must never be published.
 - GitHub Pages publication targets `chihpao/gong-milestone`; consult `docs/CURRENT_STATUS.md` for the current deployment state.
 
 The user permits a frontend framework or animation library if it materially improves the result. Do not add one by default: first explain why the existing static architecture cannot meet the requested change, and preserve GitHub Pages compatibility.
 
 ## Non-negotiable content rules
 
-- Treat `milestones.json` as the structured source of milestone dates and copy; keep `docs/CONTENT_SOURCE.md` and the static fallback in `index.html` synchronized.
+- Treat `data/milestones.json` as the structured source of milestone dates and copy; keep `docs/CONTENT_SOURCE.md` and the static fallback in `index.html` synchronized.
 - Do not invent event titles, chapter titles, transitions, slogans, interpretations, emotional narration, or filler.
+- Names and descriptions inside each `animation` object are production metadata only. Never render them as visible milestone copy.
 - The site title `龔龔里程碑` and functional access-gate labels are standing visible-text exceptions.
 - Dates may be repeated as visual background typography only when they remain faithful to the source.
 - Accessibility-only labels may describe controls, but must not become visible marketing or narrative copy.
-- When milestone content changes, update `milestones.json` first, then synchronize `docs/CONTENT_SOURCE.md` and the static fallback in `index.html`.
+- When milestone content changes, update `data/milestones.json` first, then synchronize `docs/CONTENT_SOURCE.md` and the static fallback in `index.html`.
 
 ## Non-negotiable design rules
 
@@ -104,12 +107,13 @@ Milestone backgrounds must run continuously from page load rather than enter, ex
 
 - JavaScript parses without syntax errors.
 - Major HTML opening and closing tags remain balanced.
-- `index.html` contains the milestone website, `milestones.json` parses correctly, and no access page or password flow is present.
+- `index.html` contains the milestone website, `data/milestones.json` parses correctly, and no access page or password flow is present.
 - No horizontal page overflow at 360px, 390px, or 430px.
 - Mobile menu opens, locks background scrolling, closes, and jumps to the requested year.
 - The hamburger button and full-screen year menu work at mobile and desktop widths.
 - No browser console errors.
-- All milestone text matches `milestones.json` and `docs/CONTENT_SOURCE.md`.
+- All milestone text matches `data/milestones.json` and `docs/CONTENT_SOURCE.md`.
+- Every production asset reference resolves under `assets/`; `archive/` and `private/` remain ignored and absent from the commit.
 - No invented milestone copy is introduced; preserve the user-approved animation palettes.
 - Reduced-motion and A4 print behavior remain intact.
 

@@ -42,7 +42,7 @@
 - 頁面標題為「龔龔里程碑」。
 - `Shitty but proud.` 為全站壓軸最終場景；不另設結語頁尾。
 - 第一階段只使用繁體中文；英文版本不在目前範圍內。
-- 結構化里程碑內容位於根目錄 [`milestones.json`](../milestones.json)，可讀對照請參考 [`CONTENT_SOURCE.md`](./CONTENT_SOURCE.md)。
+- 結構化里程碑內容位於 [`data/milestones.json`](../data/milestones.json)，可讀對照請參考 [`CONTENT_SOURCE.md`](./CONTENT_SOURCE.md)。
 
 ## 版面與視覺
 

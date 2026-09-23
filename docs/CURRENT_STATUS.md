@@ -1,15 +1,16 @@
 # 目前狀態與 AI 交接
 
-最後更新：2026-09-24（v47 公開入口與 JSON 內容來源）
+最後更新：2026-09-24（v49 專案目錄與資產命名重構）
 
 ## 目前狀態
 
-四階段驗收與修正已完成。v47 移除 0916 access 入口，網站由首頁直接公開；新增格式化 `milestones.json`，集中保存里程碑日期、內文、所屬年份段及動畫資產對應。頁面會載入 JSON，失敗時仍保留 HTML 靜態備援。
+四階段驗收與修正已完成。v49 將正式動畫、圖示與資料分別整理至 `assets/animations/`、`assets/icons/` 與 `data/`，十一份 SVG 改用一致的日期／事件語意檔名；歷史資產與私人素材則移至 Git 忽略的 `archive/` 與 `private/`。本次保留 v48 的完整動畫創作資料，未改動網站視覺或 SVG 動畫內容。
 
 ## 現行實作
 
 - index.html 是唯一里程碑網站；11 幕本地 SVG 持續循環，四個年份錨點。網站直接公開，不再有 access.html 或密碼流程。
-- `milestones.json` 是結構化日期與文案來源；CONTENT_SOURCE.md 與 index.html 靜態內容同步，確保 JSON 載入失敗、直接開檔或停用 JavaScript 時仍可閱讀。
+- `data/milestones.json` 是結構化日期、文案、資產關聯與逐幕動畫創作資料來源；CONTENT_SOURCE.md 與 index.html 靜態內容同步，確保 JSON 載入失敗、直接開檔或停用 JavaScript 時仍可閱讀。
+- 11 份正式動畫位於 `assets/animations/`，favicon 位於 `assets/icons/`；根目錄只保留 GitHub Pages 與專案治理入口檔案。
 - 手機點擊場景的原生按鈕切換文字，一次展開一幕；支援觸控、Enter、Space 與 aria-expanded。桌面依可見比例顯示文字，以進入／退出門檻避免邊界閃動。
 - 捲動與尺寸更新合併到單次 requestAnimationFrame，沒有計時器或自行重複的動畫迴圈，也不再依賴 IntersectionObserver。
 - 年份選單固定背景捲動、保存位置、限制 Tab／Shift+Tab 焦點，Escape 關閉並還原焦點，選年後移到對應段落。
@@ -23,6 +24,11 @@
 十一幕共 182 個持續循環的 SMIL 節點。修正定位被旋轉／縮放覆蓋、京都鳥居中心、吊鍋與盆栽定位、洗衣店循環圖層、雨線、人物影子與鏡像方向。城市、街景、山丘、星空使用重複圖層；粒子與接點淡化；人物落地與舞台手臂時序調整。詳細週期見 ANIMATION_STORYBOARD.md。
 
 ## 已驗證
+
+- v49 已確認 JSON 可解析且 11 筆資料／動畫欄位完整，JSON 與 HTML 的文案及資產順序一致，JavaScript 語法與主要 HTML 標籤平衡。11 份 SVG 均可解析、無腳本或外部引用，共 182 個永久循環 SMIL 節點。
+- 本機 HTTP 驗證確認首頁、`data/milestones.json`、favicon 與 11 份新路徑動畫共 14 個公開資源全部回應 200；根目錄無散落 SVG／JSON，`archive/` 與 `private/` 已被 Git 忽略且沒有追蹤檔案。未使用可見瀏覽器。
+
+- v48 已確認 11 筆里程碑均含完整 `animation` 欄位，資產路徑、主週期、方向與循環描述對應現行 SVG／ANIMATION_STORYBOARD.md；JSON 可解析，網站 JavaScript 仍可忽略額外維護欄位並正常讀取原有內容。
 
 - v47 已確認 JSON 語法與 11 筆 id／日期／內文完整，JSON、CONTENT_SOURCE.md 與 HTML 靜態備援一致；`access.html` 已移除。JavaScript 語法、主要 HTML 標籤、SVG 路徑與 git diff 空白檢查通過。
 
@@ -41,6 +47,8 @@
 未取得實體 iPhone、Android 或 macOS Safari。本次手機尺寸與觸控為模擬測試；WebKit 是引擎相容性檢查，不等同真機 Safari 驗收。真機字型載入、瀏海安全區、瀏覽器工具列伸縮與長時間效能仍需實機確認。
 
 ## 發布
+
+- v49 目錄重構與 v48 動畫創作資料目前只在本機完成，尚未推送；GitHub Pages 仍是 v47 已發布版本。發布時必須讓檔案搬移與所有引用修正位於同一個提交，並在部署後重新檢查 14 個公開資源。
 
 - v47 依使用者明確要求直接公開，已推送至既有 GitHub `main`。GitHub Pages 已確認首頁與 `milestones.json` 回應 200、JSON 含 11 筆資料，舊 `access.html` 回應 404。
 

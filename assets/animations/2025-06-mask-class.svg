@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
-  <!-- Continuous SMIL scene; timing and loop design: docs/ANIMATION_STORYBOARD.md. -->
+  <!-- Continuous SMIL scene; timing and loop design: ../../docs/ANIMATION_STORYBOARD.md. -->
   <defs>
     <radialGradient id="mask-forest-room" cx="0.5" cy="0.5" r="0.65">
       <stop offset="0%" stop-color="#2d4d42" stop-opacity="0.32"/>

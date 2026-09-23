@@ -1,14 +1,16 @@
 # 設計與技術決策
 
-最後更新：2026-09-22。舊版視覺與時序演進請查 CHANGELOG.md。
+最後更新：2026-09-24。舊版視覺與時序演進請查 CHANGELOG.md。
 
 ## 靜態架構
 
-index.html 是唯一里程碑網站，CSS／JavaScript 內嵌；11份本地SVG為背景，內嵌SVG為靜態備援。網站直接公開，不再設 access.html。格式化的 `milestones.json` 保存日期、內文、所屬年份段與動畫資產對應；頁面載入時以安全的 DOM API 套用資料，載入失敗時保留 HTML 靜態內容。沒有框架、後端或建置流程，保留GitHub Pages與直接開檔相容性。
+index.html 是唯一里程碑網站，CSS／JavaScript 內嵌；11份正式本地 SVG 位於 `assets/animations/`，介面圖示位於 `assets/icons/`，內嵌 SVG 為靜態備援。網站直接公開，不再設 access.html。格式化的 `data/milestones.json` 保存日期、內文、所屬年份段、動畫資產及逐幕創作腳本；頁面只讀取顯示所需欄位，較完整的動畫資料留給未來維護與創作。載入失敗時保留 HTML 靜態內容。沒有框架、後端或建置流程，保留 GitHub Pages 與直接開檔相容性。
+
+`archive/` 只保存已淘汰本機資產，`private/` 只保存私人素材；兩者以目錄級規則忽略，不能進入 GitHub。正式發布檔案不得散放於根目錄，新增動畫必須使用小寫語意檔名並放入 `assets/animations/`。
 
 ## 可讀內容優先
 
-`milestones.json` 是結構化里程碑文案來源，CONTENT_SOURCE.md 為人類可讀對照，index.html 保留無 JavaScript 備援。保留使用者在本機合併的2019/01句子；分享用的一般 description 與 Open Graph 描述依使用者要求統一為英文 `A dream chaser.`。2024引言及最終祝福已刪除，不再保留相應樣式。現有動畫橘／紅橘色已獲使用者接受。
+`data/milestones.json` 是結構化里程碑文案來源，CONTENT_SOURCE.md 為人類可讀對照，index.html 保留無 JavaScript 備援。保留使用者在本機合併的2019/01句子；分享用的一般 description 與 Open Graph 描述依使用者要求統一為英文 `A dream chaser.`。2024引言及最終祝福已刪除，不再保留相應樣式。現有動畫橘／紅橘色已獲使用者接受。
 
 ## 原生控制與焦點
 

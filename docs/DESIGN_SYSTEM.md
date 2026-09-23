@@ -6,9 +6,9 @@
 
 - 手機優先，360px 起；暖白、近黑、薄荷綠介面，11 幕獨立暗底 SVG。使用者已接受現有橘／紅橘色，保留各幕原色。
 - 正文 Noto Sans TC；日期 PT Sans；選單及英文 Montserrat。Google Fonts 以系統字型備援。
-- 里程碑日期與文案由 `milestones.json` 載入，並與 CONTENT_SOURCE.md 及 HTML 靜態備援同步；保留使用者的 2019/01 合併句。2024 課程為單欄，不恢復已刪除引言或祝福。
+- 里程碑日期與文案由 `data/milestones.json` 載入，並與 CONTENT_SOURCE.md 及 HTML 靜態備援同步；保留使用者的 2019/01 合併句。2024 課程為單欄，不恢復已刪除引言或祝福。
 - 文字置中、白色、透明背景；無文字框、無背景模糊，文字陰影用於閱讀對比。
-- 動畫名稱、方向、時序與循環以 ANIMATION_STORYBOARD.md 為準。
+- 每幕日期、文案、`assets/animations/` 資產及完整動畫腳本綁在 `data/milestones.json`；共同創作方法、方向、時序與循環規則以 ANIMATION_STORYBOARD.md 為準。
 
 ## 尺寸
 

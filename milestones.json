@@ -1,0 +1,118 @@
+{
+  "milestones": [
+    {
+      "id": "2017",
+      "section": "y2017",
+      "tone": "a",
+      "asset": "2017_animation.svg",
+      "date": "2017",
+      "content": [
+        "在台灣參加陽光劇團 M 老師的工作坊"
+      ]
+    },
+    {
+      "id": "2018-2020",
+      "section": "y2018",
+      "tone": "b",
+      "asset": "2018-2020_flight.svg",
+      "date": "2018/09—2020/03",
+      "content": [
+        "主要待在西班牙巴塞隆納（BCN）",
+        "期間曾回台灣，也曾前往法國"
+      ]
+    },
+    {
+      "id": "2019-01",
+      "section": "y2018",
+      "tone": "a",
+      "asset": "2019_animation.svg",
+      "date": "2019/01",
+      "content": [
+        "停留法國5天、抵達當天受到陽光劇團邀請，隔天開始在陽光劇團實習、廚房打工"
+      ]
+    },
+    {
+      "id": "2019-summer",
+      "section": "y2018",
+      "tone": "b",
+      "asset": "2019_summer.svg",
+      "date": "2019 / Summer",
+      "content": [
+        "在台灣參加陽光劇團M老師的工作坊",
+        "被老師邀請「要不要來陽光劇團實習」"
+      ]
+    },
+    {
+      "id": "2019-12",
+      "section": "y2018",
+      "tone": "a",
+      "asset": "2019_12_animation.svg",
+      "date": "2019/12",
+      "content": [
+        "在陽光劇團實習",
+        "跨年結束，在法國巴黎的一間洗衣店度過"
+      ]
+    },
+    {
+      "id": "2020-02",
+      "section": "y2018",
+      "tone": "b",
+      "asset": "2020_02_animation.svg",
+      "date": "2020/02",
+      "content": [
+        "第一次踏上陽光劇團的舞台，參與金夢島的實驗週"
+      ]
+    },
+    {
+      "id": "2020-2023",
+      "section": "y2020",
+      "tone": "a",
+      "asset": "2020_return_animation.svg",
+      "date": "2020/03—2023/11",
+      "content": [
+        "疫情爆發，回到台灣"
+      ]
+    },
+    {
+      "id": "2023-11",
+      "section": "y2020",
+      "tone": "b",
+      "asset": "2023_11_animation.svg",
+      "date": "2023/11",
+      "content": [
+        "前往京都觀看陽光劇團的《金夢島》"
+      ]
+    },
+    {
+      "id": "2024-2025",
+      "section": "y2024",
+      "tone": "a",
+      "asset": "2024_2025_animation.svg",
+      "date": "2024/09—2025/05",
+      "content": [
+        "在陽光劇團旁邊上表演課、小丑課及其他不同類型的課程"
+      ]
+    },
+    {
+      "id": "2025-06",
+      "section": "y2024",
+      "tone": "b",
+      "asset": "2025_06_animation.svg",
+      "date": "2025/06",
+      "content": [
+        "導演的面具課"
+      ]
+    },
+    {
+      "id": "motto",
+      "section": "y2024",
+      "tone": "a",
+      "asset": "final_animation.svg",
+      "type": "motto",
+      "lang": "en",
+      "content": [
+        "Shitty but proud."
+      ]
+    }
+  ]
+}

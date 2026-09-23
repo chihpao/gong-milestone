@@ -4,11 +4,11 @@
 
 ## 靜態架構
 
-index.html 是唯一里程碑網站，CSS／JavaScript 內嵌；11份本地SVG為背景，內嵌SVG為靜態備援。access.html 只負責0916入口並導向index.html。沒有框架、後端或建置流程，保留GitHub Pages相容性。
+index.html 是唯一里程碑網站，CSS／JavaScript 內嵌；11份本地SVG為背景，內嵌SVG為靜態備援。網站直接公開，不再設 access.html。格式化的 `milestones.json` 保存日期、內文、所屬年份段與動畫資產對應；頁面載入時以安全的 DOM API 套用資料，載入失敗時保留 HTML 靜態內容。沒有框架、後端或建置流程，保留GitHub Pages與直接開檔相容性。
 
 ## 可讀內容優先
 
-CONTENT_SOURCE.md 是唯一里程碑文案来源。保留使用者在本機合併的2019/01句子；分享用的一般 description 與 Open Graph 描述依使用者要求統一為英文 `A dream chaser.`。2024引言及最終祝福已刪除，不再保留相應樣式。現有動畫橘／紅橘色已獲使用者接受。
+`milestones.json` 是結構化里程碑文案來源，CONTENT_SOURCE.md 為人類可讀對照，index.html 保留無 JavaScript 備援。保留使用者在本機合併的2019/01句子；分享用的一般 description 與 Open Graph 描述依使用者要求統一為英文 `A dream chaser.`。2024引言及最終祝福已刪除，不再保留相應樣式。現有動畫橘／紅橘色已獲使用者接受。
 
 ## 原生控制與焦點
 

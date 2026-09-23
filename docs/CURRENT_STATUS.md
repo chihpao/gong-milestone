@@ -1,14 +1,15 @@
 # 目前狀態與 AI 交接
 
-最後更新：2026-09-22（v46 LINE 分享描述）
+最後更新：2026-09-24（v47 公開入口與 JSON 內容來源）
 
 ## 目前狀態
 
-四階段驗收與修正已完成。v46 將一般 description 與 Open Graph 分享描述統一改為 `A dream chaser.`，讓 LINE 等分享服務優先使用指定英文摘要，而非年份範圍。發布提交與部署結果記錄於下方「發布」。README.md 未納入本次修改。
+四階段驗收與修正已完成。v47 移除 0916 access 入口，網站由首頁直接公開；新增格式化 `milestones.json`，集中保存里程碑日期、內文、所屬年份段及動畫資產對應。頁面會載入 JSON，失敗時仍保留 HTML 靜態備援。
 
 ## 現行實作
 
-- index.html 是唯一里程碑網站；11 幕本地 SVG 持續循環，四個年份錨點。access.html 維持 0916 前端入口，非安全驗證。
+- index.html 是唯一里程碑網站；11 幕本地 SVG 持續循環，四個年份錨點。網站直接公開，不再有 access.html 或密碼流程。
+- `milestones.json` 是結構化日期與文案來源；CONTENT_SOURCE.md 與 index.html 靜態內容同步，確保 JSON 載入失敗、直接開檔或停用 JavaScript 時仍可閱讀。
 - 手機點擊場景的原生按鈕切換文字，一次展開一幕；支援觸控、Enter、Space 與 aria-expanded。桌面依可見比例顯示文字，以進入／退出門檻避免邊界閃動。
 - 捲動與尺寸更新合併到單次 requestAnimationFrame，沒有計時器或自行重複的動畫迴圈，也不再依賴 IntersectionObserver。
 - 年份選單固定背景捲動、保存位置、限制 Tab／Shift+Tab 焦點，Escape 關閉並還原焦點，選年後移到對應段落。
@@ -23,9 +24,11 @@
 
 ## 已驗證
 
+- v47 已確認 JSON 語法與 11 筆 id／日期／內文完整，JSON、CONTENT_SOURCE.md 與 HTML 靜態備援一致；`access.html` 已移除。JavaScript 語法、主要 HTML 標籤、SVG 路徑與 git diff 空白檢查通過。
+
 - v46 已確認一般 description 與 `og:description` 均為 `A dream chaser.`，Open Graph 標題、類型與地區設定齊全；JavaScript 語法、主要 HTML 標籤平衡及既有里程碑文案未受影響。
 
-- Chrome 153、Edge 153、Playwright WebKit 26.5：各 11 種尺寸，共 33 組（360×640、390×844、430×932、740×360、759×800、760×800、768×1024、844×390、1024×768、1280×800、1440×900）。未發現頁面橫向溢出；手機 11 幕文字無裁切；年份跳轉與密碼入口正常；測試期間無頁面腳本錯誤或失敗請求。
+- v46 基準測試使用 Chrome 153、Edge 153、Playwright WebKit 26.5：各 11 種尺寸，共 33 組（360×640、390×844、430×932、740×360、759×800、760×800、768×1024、844×390、1024×768、1280×800、1440×900）。未發現頁面橫向溢出；手機 11 幕文字無裁切；年份跳轉正常；測試期間無頁面腳本錯誤或失敗請求。v47 未重跑瀏覽器 UI 驗證。
 - 修正後補測原生按鈕鍵盤／觸控、選單正反向焦點循環、Escape、捲動位置還原、動態偏好切換、無 IntersectionObserver、無 JavaScript 與 SVG patternTransform 動畫，三個引擎通過。
 - 11 幕各播放 13 秒並檢視分段影像；共 143 秒。桌面測試 requestAnimationFrame 間隔 p95 約 16.8–17ms、最大 17.6ms，未觀察到超過 50ms 的主執行緒停頓。此數值不代表手機 GPU 實際幀率。
 - 洗衣店座標修正後另檢視畫面，Chrome／Edge／WebKit 重複圖層位移正常。
@@ -38,6 +41,8 @@
 未取得實體 iPhone、Android 或 macOS Safari。本次手機尺寸與觸控為模擬測試；WebKit 是引擎相容性檢查，不等同真機 Safari 驗收。真機字型載入、瀏海安全區、瀏覽器工具列伸縮與長時間效能仍需實機確認。
 
 ## 發布
+
+- v47 依使用者明確要求直接公開，已推送至既有 GitHub `main`，由 GitHub Pages 自動更新。
 
 - v46 依使用者明確要求推送至既有 GitHub `main`；LINE 既有連結預覽仍可能保留快取，需等待重新抓取或以新網址參數分享。
 
